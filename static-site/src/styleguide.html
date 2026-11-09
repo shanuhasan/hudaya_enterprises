@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- @include components/head.html {"title": "Design System", "description": "Hudaya Enterprises design system reference: colours, typography, buttons and components.", "robots": "noindex, nofollow"} -->
+</head>
+<body class="surface-ink" data-header="overlay">
+  <!-- @include components/header.html -->
+
+  <main id="main">
+
+    <!-- ===================================================== HERO -->
+    <section class="surface-ink relative flex min-h-[100svh] items-end overflow-hidden">
+      <div class="media absolute inset-0" aria-hidden="true">
+        <div class="media-ph hero-settle">
+          <i data-lucide="image"></i>
+          <span class="media-ph__label">Hero image placeholder · 16:9</span>
+        </div>
+      </div>
+      <div class="media-overlay" aria-hidden="true"></div>
+
+      <div class="container-site relative z-10 pb-[clamp(4rem,10vh,8rem)] pt-40">
+        <div class="max-w-5xl">
+          <p class="eyebrow" data-reveal>Design System · v0.1</p>
+          <h1 class="t-display mt-8" data-reveal>Crafted with <span class="t-em">precision.</span><br>Built for excellence.</h1>
+          <p class="t-lead mt-8" data-reveal>
+            The reference for every colour, typeface, spacing value and component used across the Hudaya Enterprises website.
+            This page is for review only and is not linked from the site.
+          </p>
+          <div class="mt-10 flex flex-col gap-3 sm:flex-row" data-reveal>
+            <a href="#colours" class="btn btn-primary">Explore the system <i data-lucide="arrow-right"></i></a>
+            <a href="#components" class="btn btn-secondary">View components</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== COLOURS -->
+    <section id="colours" class="surface-ink section-y rule-top" aria-labelledby="sg-colours">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">01 / Colour</p>
+          <h2 id="sg-colours" class="t-h2">A strict, monochrome palette.</h2>
+          <p class="t-lead">65% black and dark shades, 30% white and off-white, 5% champagne accent. Tailwind's default colours are disabled, so only these exist.</p>
+        </div>
+
+        <ul class="mt-16 grid grid-cols-2 gap-px border border-rule bg-[var(--line)] md:grid-cols-4" data-reveal-group>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] border border-rule bg-ink"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Primary Black</p>
+            <p class="t-meta mt-2">#080808 · bg-ink</p>
+            <p class="t-small mt-3">Main dark surfaces, header over hero.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] border border-rule bg-ink-2"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Secondary Black</p>
+            <p class="t-meta mt-2">#171717 · bg-ink-2</p>
+            <p class="t-small mt-3">Alternate sections, solid header.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] border border-rule bg-graphite"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Dark Grey</p>
+            <p class="t-meta mt-2">#252525 · bg-graphite</p>
+            <p class="t-small mt-3">Raised dark areas, body text on light.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] bg-champagne"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Champagne</p>
+            <p class="t-meta mt-2">#A88B60 · champagne</p>
+            <p class="t-small mt-3">Rules, numerals, focus, active states. ≤5%.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] bg-bone"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Off White</p>
+            <p class="t-meta mt-2">#F5F5F2 · bg-bone</p>
+            <p class="t-small mt-3">Light sections, text on dark.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] bg-white"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Pure White</p>
+            <p class="t-meta mt-2">#FFFFFF · white</p>
+            <p class="t-small mt-3">Headings on dark, primary buttons.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] bg-mute"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Secondary Text</p>
+            <p class="t-meta mt-2">#777777 · mute</p>
+            <p class="t-small mt-3">Large text (≥18px) and input lines on light only.</p>
+          </li>
+          <li class="surface-ink p-6" data-reveal>
+            <div class="aspect-[4/3] bg-line"></div>
+            <p class="mt-5 font-serif text-2xl text-fg-strong">Border</p>
+            <p class="t-meta mt-2">#E5E5E5 · line</p>
+            <p class="t-small mt-3">Hairlines on light surfaces.</p>
+          </li>
+        </ul>
+
+        <div class="mt-16 grid gap-10 lg:grid-cols-12" data-reveal>
+          <div class="lg:col-span-4">
+            <h3 class="t-h3">Contrast rules</h3>
+            <p class="t-body mt-4">Measured against WCAG 2.2 AA. These rules are built into the surface system, so components follow them automatically.</p>
+          </div>
+          <div class="lg:col-span-7 lg:col-start-6">
+            <dl class="spec-list">
+              <div class="spec-list__row"><dt>Off White on Black</dt><dd>18.6 : 1 — all text</dd></div>
+              <div class="spec-list__row"><dt>Champagne on Black</dt><dd>6.2 : 1 — text allowed on dark</dd></div>
+              <div class="spec-list__row"><dt>Champagne on White</dt><dd>3.2 : 1 — decoration / large text only</dd></div>
+              <div class="spec-list__row"><dt>#777 on Black / White</dt><dd>4.47 / 4.48 : 1 — large text only</dd></div>
+              <div class="spec-list__row"><dt>Small muted text</dt><dd>Off White 70% on dark · Dark Grey on light</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== TYPOGRAPHY -->
+    <section class="surface-bone section-y" aria-labelledby="sg-type">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">02 / Typography</p>
+          <h2 id="sg-type" class="t-h2">Editorial serif, precise sans.</h2>
+          <p class="t-lead">Cormorant Garamond for headlines. Inter for body, navigation and buttons.</p>
+        </div>
+
+        <div class="mt-16 border-t border-rule">
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Display · Cormorant 500<br>48 → 128px · lh 0.95</p>
+            <p class="t-display lg:col-span-9">Precision</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">H1 · Cormorant 500<br>44 → 84px · lh 1.0</p>
+            <p class="t-h1 lg:col-span-9">Premium garment manufacturing</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">H2 · Cormorant 500<br>34 → 60px · lh 1.08</p>
+            <p class="t-h2 lg:col-span-9">Lowers, track pants &amp; <span class="t-em">jackets</span></p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">H3 · Cormorant 500<br>24 → 32px · lh 1.2</p>
+            <p class="t-h3 lg:col-span-9">Stitching and finishing details</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Quote · Cormorant Italic 400<br>28 → 44px · lh 1.25</p>
+            <p class="t-quote lg:col-span-9">“Every garment begins with a precise pattern and ends with a careful inspection.”</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Eyebrow · Inter 500<br>12px · tracking 0.24em</p>
+            <div class="lg:col-span-9"><p class="eyebrow">03 / Capabilities</p></div>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Lead · Inter 400<br>18px · lh 1.75</p>
+            <p class="t-lead lg:col-span-9">We work with clothing brands, wholesalers and private label businesses to manufacture lowers and jackets to their specifications.</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Body · Inter 400<br>16px · lh 1.7 · max 68ch</p>
+            <p class="t-body lg:col-span-9">Body copy is set in Inter at a comfortable reading size with generous line spacing. Line length is capped at roughly 68 characters so long paragraphs stay easy to read on large screens.</p>
+          </div>
+          <div class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12" data-reveal>
+            <p class="t-meta lg:col-span-3">Small / Meta · Inter<br>14px · 11px caps</p>
+            <div class="lg:col-span-9 grid gap-3">
+              <p class="t-small">Small text for captions, footers and supporting details.</p>
+              <p class="t-meta">Lowers · Track Pants · Style Code</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== LAYOUT -->
+    <section class="surface-ink section-y" aria-labelledby="sg-layout">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">03 / Layout</p>
+          <h2 id="sg-layout" class="t-h2">One container. Twelve columns.</h2>
+          <p class="t-lead">Max width 1440px. Side gutters 20 / 32 / 48 / 64px as the screen grows. Sections use one vertical rhythm.</p>
+        </div>
+
+        <div class="grid-site mt-16" aria-hidden="true" data-reveal>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+          <div class="h-40 bg-champagne/15 border border-champagne/30"></div>
+        </div>
+
+        <div class="mt-16 grid gap-px bg-[var(--line)] border border-rule md:grid-cols-3" data-reveal-group>
+          <div class="surface-ink p-8" data-reveal>
+            <p class="t-meta">Section spacing</p>
+            <p class="mt-4 font-serif text-3xl text-fg-strong">80 → 160px</p>
+            <p class="t-small mt-2">.section-y</p>
+          </div>
+          <div class="surface-ink p-8" data-reveal>
+            <p class="t-meta">Compact spacing</p>
+            <p class="mt-4 font-serif text-3xl text-fg-strong">56 → 96px</p>
+            <p class="t-small mt-2">.section-y-compact</p>
+          </div>
+          <div class="surface-ink p-8" data-reveal>
+            <p class="t-meta">Asymmetric splits</p>
+            <p class="mt-4 font-serif text-3xl text-fg-strong">7/5 · 5/7 · 4/8</p>
+            <p class="t-small mt-2">Offset by one column for editorial rhythm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== BUTTONS -->
+    <section class="surface-ink-2 section-y" aria-labelledby="sg-buttons">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">04 / Buttons &amp; Links</p>
+          <h2 id="sg-buttons" class="t-h2">Sharp, quiet, confident.</h2>
+          <p class="t-lead">Rectangular, Inter SemiBold, uppercase. Arrows move 4px on hover.</p>
+        </div>
+
+        <div class="mt-16 grid gap-12 lg:grid-cols-2">
+          <div data-reveal>
+            <p class="t-meta mb-6">On dark</p>
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="#" class="btn btn-primary">Request a Quote <i data-lucide="arrow-right"></i></a>
+              <a href="#" class="btn btn-secondary">View Collection</a>
+              <a href="#" class="btn btn-accent">Accent</a>
+            </div>
+            <div class="mt-6 flex flex-wrap items-center gap-4">
+              <a href="#" class="btn btn-primary btn-sm">Small</a>
+              <a href="#" class="btn btn-secondary btn-lg">Large</a>
+              <button type="button" class="btn-icon" aria-label="Next"><i data-lucide="arrow-right"></i></button>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center gap-8">
+              <a href="#" class="link-arrow">Discover more <i data-lucide="arrow-right"></i></a>
+              <a href="#" class="link-underline text-small">Underline link</a>
+            </div>
+          </div>
+
+          <div class="surface-bone p-8 md:p-12" data-reveal>
+            <p class="t-meta mb-6">On light</p>
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="#" class="btn btn-dark">Request a Quote <i data-lucide="arrow-right"></i></a>
+              <a href="#" class="btn btn-outline-dark">View Collection</a>
+              <button type="button" class="btn-icon" aria-label="Next"><i data-lucide="arrow-right"></i></button>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center gap-8">
+              <a href="#" class="link-arrow">Discover more <i data-lucide="arrow-right"></i></a>
+              <a href="#" class="link-underline text-small">Underline link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== COMPONENTS -->
+    <section id="components" class="surface-ink section-y" aria-labelledby="sg-components">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">05 / Collections</p>
+          <h2 id="sg-components" class="t-h2">Category tiles &amp; product cards.</h2>
+          <p class="t-lead">Large editorial imagery, no prices. Every card leads to an enquiry. Grey blocks mark where real photography will go.</p>
+        </div>
+
+        <!-- Category tiles -->
+        <div class="mt-16 grid gap-4 md:grid-cols-2" data-reveal-group>
+          <a href="lowers.html" class="category-tile" data-reveal>
+            <div class="category-tile__media media">
+              <div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Lowers image · 4:5</span></div>
+            </div>
+            <div class="media-overlay z-[1]" aria-hidden="true"></div>
+            <div class="category-tile__content">
+              <span class="category-tile__index">01 / Collection</span>
+              <h3 class="category-tile__title">Lowers &amp; <span class="t-em">Track Pants</span></h3>
+              <span class="link-arrow">View collection <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="jackets.html" class="category-tile" data-reveal>
+            <div class="category-tile__media media">
+              <div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Jackets image · 4:5</span></div>
+            </div>
+            <div class="media-overlay z-[1]" aria-hidden="true"></div>
+            <div class="category-tile__content">
+              <span class="category-tile__index">02 / Collection</span>
+              <h3 class="category-tile__title">Jackets</h3>
+              <span class="link-arrow">View collection <i data-lucide="arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product cards -->
+        <div class="mt-24 flex flex-wrap items-end justify-between gap-6" data-reveal>
+          <h3 class="t-h3">Product card</h3>
+          <div class="filter-tabs" role="group" aria-label="Filter example">
+            <button type="button" class="filter-tab" aria-pressed="true">All</button>
+            <button type="button" class="filter-tab" aria-pressed="false">Track Pants</button>
+            <button type="button" class="filter-tab" aria-pressed="false">Joggers</button>
+            <button type="button" class="filter-tab" aria-pressed="false">Sports</button>
+          </div>
+        </div>
+        <div class="mt-10 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+          <article class="product-card" data-reveal>
+            <div class="product-card__media media"><div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Product · 4:5</span></div></div>
+            <div class="product-card__body">
+              <p class="t-meta">Lowers · Track Pants</p>
+              <h4 class="product-card__title"><a href="#">Sample product name</a></h4>
+              <a href="contact.html#quote" class="link-arrow">Enquire <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="product-card" data-reveal>
+            <div class="product-card__media media"><div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Product · 4:5</span></div></div>
+            <div class="product-card__body">
+              <p class="t-meta">Lowers · Joggers</p>
+              <h4 class="product-card__title"><a href="#">Sample product name</a></h4>
+              <a href="contact.html#quote" class="link-arrow">Enquire <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="product-card" data-reveal>
+            <div class="product-card__media media"><div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Product · 4:5</span></div></div>
+            <div class="product-card__body">
+              <p class="t-meta">Jackets · Track Jacket</p>
+              <h4 class="product-card__title"><a href="#">Sample product name</a></h4>
+              <a href="contact.html#quote" class="link-arrow">Enquire <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+          <article class="product-card" data-reveal>
+            <div class="product-card__media media"><div class="media-ph"><i data-lucide="image"></i><span class="media-ph__label">Product · 4:5</span></div></div>
+            <div class="product-card__body">
+              <p class="t-meta">Jackets · Winter</p>
+              <h4 class="product-card__title"><a href="#">Sample product name</a></h4>
+              <a href="contact.html#quote" class="link-arrow">Enquire <i data-lucide="arrow-right"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== INDEX LIST + SPEC -->
+    <section class="surface-bone section-y" aria-labelledby="sg-lists">
+      <div class="container-site grid gap-16 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <div class="section-head lg:sticky lg:top-32" data-reveal>
+            <p class="eyebrow">06 / Lists</p>
+            <h2 id="sg-lists" class="t-h2">Numbered rows &amp; specifications.</h2>
+            <p class="t-lead">For capabilities, values, quality checkpoints and product specs. Items shown are examples only.</p>
+          </div>
+        </div>
+        <div class="lg:col-span-8">
+          <ol class="index-list" data-reveal-group>
+            <li class="index-list__item" data-reveal>
+              <span class="index-list__num">01</span>
+              <h3 class="index-list__title">Private label manufacturing</h3>
+              <p class="index-list__text">Example row. The final list of services will be confirmed with you before it is published.</p>
+            </li>
+            <li class="index-list__item" data-reveal>
+              <span class="index-list__num">02</span>
+              <h3 class="index-list__title">Sampling &amp; development</h3>
+              <p class="index-list__text">Example row describing a capability in one or two short sentences.</p>
+            </li>
+            <li class="index-list__item" data-reveal>
+              <span class="index-list__num">03</span>
+              <h3 class="index-list__title">Bulk production</h3>
+              <p class="index-list__text">Example row. No capacity figures are shown unless provided.</p>
+            </li>
+          </ol>
+
+          <h3 class="t-h3 mt-20" data-reveal>Specification list</h3>
+          <dl class="spec-list mt-8" data-reveal>
+            <div class="spec-list__row"><dt>Fabric</dt><dd>[Fabric composition]</dd></div>
+            <div class="spec-list__row"><dt>GSM</dt><dd>[GSM]</dd></div>
+            <div class="spec-list__row"><dt>Sizes</dt><dd>[Size range]</dd></div>
+            <div class="spec-list__row"><dt>Colours</dt><dd>[Colour options]</dd></div>
+            <div class="spec-list__row"><dt>MOQ</dt><dd>[Minimum order quantity]</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== PROCESS -->
+    <section class="surface-ink section-y" aria-labelledby="sg-process">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">07 / Process</p>
+          <h2 id="sg-process" class="t-h2">From inquiry to dispatch.</h2>
+        </div>
+        <div class="mt-16">
+          <!-- @include components/process-steps.html -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== FORMS -->
+    <section class="surface-white section-y" aria-labelledby="sg-forms">
+      <div class="container-site grid gap-16 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">08 / Forms</p>
+            <h2 id="sg-forms" class="t-h2">Underline fields, floating labels.</h2>
+            <p class="t-lead">Large targets, 16px inputs (no zoom on iOS), errors explained in text, not colour alone.</p>
+          </div>
+        </div>
+        <form class="lg:col-span-7 lg:col-start-6" novalidate onsubmit="return false" data-reveal>
+          <div class="form-grid">
+            <div class="field">
+              <input class="field__input" id="sg-name" name="name" type="text" placeholder=" " autocomplete="name" required>
+              <label class="field__label" for="sg-name">Full name *</label>
+            </div>
+            <div class="field">
+              <input class="field__input" id="sg-company" name="company" type="text" placeholder=" " autocomplete="organization" value="Example Brand Co.">
+              <label class="field__label" for="sg-company">Company</label>
+            </div>
+            <div class="field is-invalid">
+              <input class="field__input" id="sg-email" name="email" type="email" placeholder=" " autocomplete="email" value="name@" aria-invalid="true" aria-describedby="sg-email-error">
+              <label class="field__label" for="sg-email">Email *</label>
+              <p class="field__error" id="sg-email-error">Enter a valid email address, e.g. name@company.com</p>
+            </div>
+            <div class="field field--static">
+              <select class="field__input" id="sg-category" name="category">
+                <option>Lowers &amp; Track Pants</option>
+                <option>Jackets</option>
+                <option>Both</option>
+              </select>
+              <label class="field__label" for="sg-category">Product category</label>
+            </div>
+            <div class="field field--full">
+              <textarea class="field__input" id="sg-message" name="message" placeholder=" " rows="4"></textarea>
+              <label class="field__label" for="sg-message">Tell us about your requirement</label>
+            </div>
+            <div class="field--full">
+              <label class="check"><input type="checkbox" checked> I agree to be contacted about this inquiry.</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark mt-10">Send Inquiry <i data-lucide="arrow-right"></i></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================================================== ICONS -->
+    <section class="surface-ink section-y-compact" aria-labelledby="sg-icons">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">09 / Icons</p>
+          <h2 id="sg-icons" class="t-h2">Lucide, 1.25 stroke.</h2>
+        </div>
+        <ul class="mt-12 flex flex-wrap gap-3 text-fg-strong" data-reveal>
+          <li class="social-link" title="arrow-right"><i data-lucide="arrow-right"></i></li>
+          <li class="social-link" title="arrow-up-right"><i data-lucide="arrow-up-right"></i></li>
+          <li class="social-link" title="menu"><i data-lucide="menu"></i></li>
+          <li class="social-link" title="x"><i data-lucide="x"></i></li>
+          <li class="social-link" title="phone"><i data-lucide="phone"></i></li>
+          <li class="social-link" title="mail"><i data-lucide="mail"></i></li>
+          <li class="social-link" title="map-pin"><i data-lucide="map-pin"></i></li>
+          <li class="social-link" title="clock"><i data-lucide="clock"></i></li>
+          <li class="social-link" title="scissors"><i data-lucide="scissors"></i></li>
+          <li class="social-link" title="ruler"><i data-lucide="ruler"></i></li>
+          <li class="social-link" title="shirt"><i data-lucide="shirt"></i></li>
+          <li class="social-link" title="layers"><i data-lucide="layers"></i></li>
+          <li class="social-link" title="clipboard-check"><i data-lucide="clipboard-check"></i></li>
+          <li class="social-link" title="truck"><i data-lucide="truck"></i></li>
+          <li class="social-link" title="whatsapp"><!-- @include icons/brand/whatsapp.svg --></li>
+          <li class="social-link" title="instagram"><!-- @include icons/brand/instagram.svg --></li>
+          <li class="social-link" title="facebook"><!-- @include icons/brand/facebook.svg --></li>
+          <li class="social-link" title="linkedin"><!-- @include icons/brand/linkedin.svg --></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- @include components/cta-band.html -->
+  </main>
+
+  <!-- @include components/footer.html -->
+  <!-- @include components/floating-actions.html -->
+</body>
+</html>

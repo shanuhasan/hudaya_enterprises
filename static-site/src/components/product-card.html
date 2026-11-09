@@ -1,0 +1,24 @@
+{{--
+  Component: product-card — enquiry-led product card (no price).
+  Params:
+    name      product / style name                      (required)
+    category  "Lowers" | "Jackets"                      (required)
+    type      sub-type, e.g. "Track Pants"              (required)
+    filter    space-separated filter keys, e.g. "lowers" or "mens sports"   (required)
+    page      category page: "lowers" | "jackets" (defaults to filter)      (optional)
+    src, alt, brief                                     (passed to components/media.html)
+  The title links to the category page; "Enquire" opens the quote form pre-filled with
+  the product and category.
+  Phase 2: becomes <x-product-card :product="$product" />.
+--}}
+<article class="product-card" data-filter-item data-category="{{ filter }}" data-search="{{ name }} {{ category }} {{ type }}" data-reveal>
+  <!-- @include components/media.html {"class": "product-card__media"} -->
+  <div class="product-card__body">
+    <p class="t-meta">{{ category }} · {{ type }}</p>
+    <h3 class="product-card__title"><a href="{{ page ?? filter }}.html">{{ name }}</a></h3>
+    <a href="contact.html?product={{ name | url }}&amp;category={{ page ?? filter }}#quote" class="link-arrow">
+      Enquire<span class="sr-only"> about {{ name }}</span>
+      <i data-lucide="arrow-right"></i>
+    </a>
+  </div>
+</article>

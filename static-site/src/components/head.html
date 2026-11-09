@@ -1,0 +1,53 @@
+{{--
+  Component: head
+  Params: title (required), description (required, ≤ 160 chars), robots (optional, e.g. "noindex, nofollow")
+  Usage:  @include components/head.html {"title": "About Us", "description": "..."}
+  Absolute URLs (canonical, og:url, og:image) are output only once site.siteUrl is set,
+  because social platforms and search engines require absolute URLs.
+--}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }} | {{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+<!-- @if robots --><meta name="robots" content="{{ robots }}"><!-- @endif -->
+<meta name="theme-color" content="#080808">
+<!-- @if site.siteUrl --><link rel="canonical" href="{{ site.siteUrl }}/{{ currentPath }}"><!-- @endif -->
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ title }} | {{ site.name }}">
+<meta property="og:description" content="{{ description }}">
+<!-- @if site.siteUrl -->
+<meta property="og:url" content="{{ site.siteUrl }}/{{ currentPath }}">
+<meta property="og:image" content="{{ site.siteUrl }}/images/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ site.name }} — {{ site.tagline }}">
+<!-- @endif -->
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/images/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
+
+{{-- Fonts are self-hosted via @fontsource (see css/app.css). --}}
+
+<link rel="stylesheet" href="/css/app.css">
+<script>document.documentElement.classList.add('js');</script>
+<script type="module" src="/js/main.js"></script>
+
+{{-- Structured data: only verified facts from site.config.json are included. --}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ site.name | json }}",
+  "description": "{{ site.intro | json }}"<!-- @if site.siteUrl -->,
+  "url": "{{ site.siteUrl | json }}/",
+  "logo": "{{ site.siteUrl | json }}/images/brand/logo.png"<!-- @endif --><!-- @if site.email -->,
+  "email": "{{ site.email | json }}"<!-- @endif --><!-- @if site.phone -->,
+  "telephone": "{{ site.phone | json }}"<!-- @endif --><!-- @if site.address -->,
+  "address": "{{ site.address | json }}"<!-- @endif -->
+}
+</script>

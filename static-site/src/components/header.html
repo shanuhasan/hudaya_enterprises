@@ -1,0 +1,56 @@
+{{--
+  Component: header — skip link + announcement bar + navbar + mobile menu
+  Active link: set <body data-nav-active="home|about|products|manufacturing|quality|gallery|contact">
+  Over a full-bleed hero: set <body data-header="overlay"> (navbar transparent until scrolled).
+  Announcement bar: shown when site.announcement is set; it tucks away on scroll.
+  The mobile menu must stay OUTSIDE .site-top (a transformed parent would break position: fixed).
+--}}
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="site-top" data-site-header>
+  <!-- @if site.announcement -->
+  <div class="announce" role="region" aria-label="Announcement">
+    <div class="container-site announce__inner">
+      <p class="announce__text">
+        <span class="hidden md:inline">{{ site.announcement }}</span>
+        <span class="md:hidden">{{ site.announcementShort }}</span>
+      </p>
+      <a href="contact.html#quote" class="announce__link">
+        Request a quote
+        <i data-lucide="arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  <!-- @endif -->
+
+  <header class="site-header">
+    <div class="container-site site-header__inner">
+      <!-- @include components/logo.html -->
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" data-nav="home" href="index.html">Home</a></li>
+          <li><a class="nav-link" data-nav="about" href="about.html">About</a></li>
+          <li><a class="nav-link" data-nav="products" href="products.html">Products</a></li>
+          <li><a class="nav-link" data-nav="manufacturing" href="manufacturing.html">Manufacturing</a></li>
+          <li><a class="nav-link" data-nav="quality" href="quality.html">Quality</a></li>
+          <li><a class="nav-link" data-nav="gallery" href="gallery.html">Gallery</a></li>
+          <li><a class="nav-link" data-nav="contact" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="contact.html#quote" class="btn btn-primary btn-sm hidden md:inline-flex">
+          Request a Quote
+          <i data-lucide="arrow-right"></i>
+        </a>
+        <button type="button" class="menu-toggle" data-menu-open aria-controls="mobile-menu" aria-expanded="false">
+          <i data-lucide="menu"></i>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- @include components/mobile-menu.html -->

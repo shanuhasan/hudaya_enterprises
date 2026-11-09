@@ -1,0 +1,13 @@
+{{--
+  Component: contact-lines — address, phone, email, hours from site.config.json.
+  Phone / email render as links only once set; until then a bracketed placeholder
+  is shown as plain text (never a broken tel: / mailto: link).
+--}}
+<address class="grid gap-4 not-italic {{ linesClass ?? '' }}">
+  <p class="contact-line"><i data-lucide="map-pin"></i><span>{{ site.address ?? '[Street address, City, State, PIN code]' }}</span></p>
+  <!-- @if site.phoneHref --><a class="contact-line" href="tel:{{ site.phoneHref }}"><i data-lucide="phone"></i><span>{{ site.phone ?? site.phoneHref }}</span></a><!-- @endif -->
+  <!-- @if !site.phoneHref --><p class="contact-line"><i data-lucide="phone"></i><span>{{ site.phone ?? '[Phone number]' }}</span></p><!-- @endif -->
+  <!-- @if site.email --><a class="contact-line" href="mailto:{{ site.email }}"><i data-lucide="mail"></i><span>{{ site.email }}</span></a><!-- @endif -->
+  <!-- @if !site.email --><p class="contact-line"><i data-lucide="mail"></i><span>[Email address]</span></p><!-- @endif -->
+  <p class="contact-line"><i data-lucide="clock"></i><span>{{ site.hours ?? '[Business hours]' }}</span></p>
+</address>

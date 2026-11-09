@@ -1,0 +1,8 @@
+{{--
+  Component: logo — Hudaya Enterprises logo (light lettering for dark surfaces).
+  Params: class (optional, e.g. "logo--lg"), loading (optional, default "eager")
+  Source artwork: public/images/brand/logo.png (original colours) and logo-light.png (stacked).
+--}}
+<a href="index.html" class="logo {{ class ?? '' }}">
+  <img src="images/brand/logo-lockup-light.png" alt="{{ site.name }} — Home" width="557" height="200" class="logo__img" decoding="async">
+</a>

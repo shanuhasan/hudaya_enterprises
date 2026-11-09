@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- @include components/head.html {"title": "Manufacturing", "description": "The complete garment production workflow at Hudaya Enterprises, from design review and sampling to cutting, stitching, finishing, inspection and dispatch."} -->
+</head>
+<body class="surface-ink" data-header="overlay" data-nav-active="manufacturing">
+  <!-- @include components/header.html -->
+
+  <main id="main">
+    <!-- @include components/page-hero.html {"crumb": "Manufacturing", "eyebrow": "Manufacturing", "title": "From pattern", "titleEm": "to packed order.", "lead": "Every stage of production is planned around one approved sample, so bulk orders match what you signed off.", "src": "images/placeholders/hero/manufacturing.jpg", "alt": "", "brief": "Manufacturing hero · sewing machine needle on dark fabric · close, dramatic light · 16:9"} -->
+
+    {{-- ============================================================ OVERVIEW --}}
+    <section class="surface-bone section-y" aria-labelledby="overview-title">
+      <div class="container-site">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div class="section-head lg:col-span-6" data-reveal>
+            <p class="eyebrow">01 / Overview</p>
+            <h2 id="overview-title" class="t-h2">Nine stages. <span class="t-em">One standard.</span></h2>
+          </div>
+          <p class="t-lead lg:col-span-5 lg:col-start-8" data-reveal>
+            A clear production workflow keeps quality consistent and lets you know exactly where your order stands. Select a stage to jump to it.
+          </p>
+        </div>
+
+        <nav class="mt-14" aria-label="Production stages" data-reveal>
+          <ol class="stage-index">
+            <li><a href="#stage-01"><span>01</span>Design review</a></li>
+            <li><a href="#stage-02"><span>02</span>Fabric &amp; trims</a></li>
+            <li><a href="#stage-03"><span>03</span>Pattern &amp; sampling</a></li>
+            <li><a href="#stage-04"><span>04</span>Sample approval</a></li>
+            <li><a href="#stage-05"><span>05</span>Fabric inspection &amp; cutting</a></li>
+            <li><a href="#stage-06"><span>06</span>Stitching &amp; assembly</a></li>
+            <li><a href="#stage-07"><span>07</span>Finishing &amp; pressing</a></li>
+            <li><a href="#stage-08"><span>08</span>Quality inspection</a></li>
+            <li><a href="#stage-09"><span>09</span>Packing &amp; dispatch</a></li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+
+    {{-- ============================================================ WORKFLOW --}}
+    <section class="surface-ink section-y" aria-labelledby="workflow-title">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">02 / Production workflow</p>
+          <h2 id="workflow-title" class="t-h2">How every garment <span class="t-em">is made.</span></h2>
+        </div>
+
+        <div class="mt-16">
+          <!-- @include components/stage.html {"id": "stage-01", "num": "01", "title": "Design & tech pack review", "text": "We review your design, tech pack or reference garment together with your quantities and timeline, and confirm what is needed to begin sampling.", "outcome": "Agreed brief for the sample", "src": "images/placeholders/manufacturing/stage-01-design.jpg", "alt": "Garment design sketches and a tech pack on a desk", "brief": "Design sketches & tech pack on a desk · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-02", "num": "02", "title": "Fabric & trims selection", "text": "Fabric, colours, zips, drawcords, labels and other trims are selected to match your specification and price point.", "outcome": "Confirmed fabric and trims", "variant": "reverse", "src": "images/placeholders/manufacturing/stage-02-fabric.jpg", "alt": "Fabric rolls and trims laid out for selection", "brief": "Fabric rolls & trims · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-03", "num": "03", "title": "Pattern making & sampling", "text": "Patterns are prepared and a sample garment is made so that fit, construction and finish can be checked on a real piece.", "outcome": "Sample garment", "src": "images/placeholders/manufacturing/pattern-making.jpg", "alt": "Garment pattern pieces laid out on a table", "brief": "Pattern making on a table · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-04", "num": "04", "title": "Sample approval", "text": "You review the sample. Any changes are made and re-sampled if needed, then specifications, pricing and delivery schedule are agreed.", "outcome": "Approved sample and order confirmation", "variant": "reverse", "src": "images/placeholders/manufacturing/stage-04-approval.jpg", "alt": "Sample garment being measured on a table", "brief": "Sample garment being measured · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-05", "num": "05", "title": "Fabric inspection & cutting", "text": "Bulk fabric is checked before cutting. Pieces are then cut accurately to the approved patterns.", "outcome": "Cut panels ready for stitching", "src": "images/placeholders/manufacturing/fabric-cutting.jpg", "alt": "Fabric being cut on a cutting table", "brief": "Fabric cutting on a cutting table · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-06", "num": "06", "title": "Stitching & assembly", "text": "Garments are assembled on industrial machines, with attention to seam strength, stitch consistency and panel alignment.", "outcome": "Assembled garments", "variant": "reverse", "src": "images/placeholders/manufacturing/stitching-line.jpg", "alt": "Garments being stitched on industrial sewing machines", "brief": "Stitching on industrial machines · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-07", "num": "07", "title": "Finishing & pressing", "text": "Loose threads are trimmed, trims and labels are attached, and garments are pressed for a clean, ready-to-sell finish.", "outcome": "Finished garments", "src": "images/placeholders/manufacturing/finishing.jpg", "alt": "Garment being pressed during finishing", "brief": "Pressing & finishing · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-08", "num": "08", "title": "Quality inspection", "text": "Finished garments are checked against the approved sample for stitching, measurements, colour and finish.", "outcome": "Garments cleared for packing", "variant": "reverse", "src": "images/placeholders/quality/inspection.jpg", "alt": "Garment being measured during quality inspection", "brief": "Quality inspection · garment measurement · 4:3"} -->
+          <!-- @include components/stage.html {"id": "stage-09", "num": "09", "title": "Packing & dispatch", "text": "Garments are folded, tagged and packed to your requirements, then dispatched as agreed.", "outcome": "Order dispatched", "src": "images/placeholders/jackets/jacket-detail.jpg", "alt": "Folded jackets ready for packing", "brief": "Folded garments ready for packing · 4:3"} -->
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ PRODUCTION DETAILS --}}
+    {{-- Values in [brackets] are placeholders for the client to confirm. Never publish invented figures. --}}
+    <section class="surface-ink-2 section-y" aria-labelledby="details-title">
+      <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
+        <div class="lg:col-span-5">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">03 / Production details</p>
+            <h2 id="details-title" class="t-h2">Planning <span class="t-em">your order.</span></h2>
+            <p class="t-lead">Minimums and lead times depend on the style, fabric and quantity. We confirm them for every order before production begins.</p>
+          </div>
+          <a href="contact.html#quote" class="btn btn-primary mt-10" data-reveal>Discuss your order <i data-lucide="arrow-right"></i></a>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+          <dl class="spec-list">
+            <div class="spec-list__row"><dt>Product categories</dt><dd>Lowers, track pants and jackets</dd></div>
+            <div class="spec-list__row"><dt>Order types</dt><dd>Sample, bulk and repeat orders</dd></div>
+            <div class="spec-list__row"><dt>Minimum order</dt><dd>[Minimum order quantity — to be confirmed]</dd></div>
+            <div class="spec-list__row"><dt>Sampling time</dt><dd>[Typical sampling lead time — to be confirmed]</dd></div>
+            <div class="spec-list__row"><dt>Bulk lead time</dt><dd>[Typical production lead time — to be confirmed]</dd></div>
+            <div class="spec-list__row"><dt>Production capacity</dt><dd>[Monthly capacity — to be confirmed]</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- @include components/cta-band.html {"ctaEyebrow": "Start production", "ctaTitle": "Ready to", "ctaTitleEm": "start sampling?"} -->
+  </main>
+
+  <!-- @include components/footer.html -->
+  <!-- @include components/floating-actions.html -->
+</body>
+</html>

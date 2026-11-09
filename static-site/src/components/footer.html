@@ -1,0 +1,73 @@
+{{-- Component: footer — all company details come from src/site.config.json --}}
+<footer class="surface-ink pt-[var(--section-y-compact)]" aria-labelledby="footer-title">
+  <h2 id="footer-title" class="sr-only">Site footer</h2>
+
+  <div class="container-site">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-6">
+
+      {{-- Brand --}}
+      <div class="lg:col-span-4">
+        <!-- @include components/logo.html {"class": "logo--lg"} -->
+        <p class="t-small mt-8 max-w-sm">{{ site.intro }}</p>
+        <!-- @if site.whatsappNumber -->
+        <a href="https://wa.me/{{ site.whatsappNumber }}?text={{ site.whatsappMessage | url }}" target="_blank" rel="noopener" class="btn btn-secondary btn-sm mt-8">
+          <!-- @include icons/brand/whatsapp.svg -->
+          Chat on WhatsApp<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <!-- @endif -->
+      </div>
+
+      {{-- Products --}}
+      <nav class="lg:col-span-2 lg:col-start-6" aria-label="Product categories">
+        <h3 class="footer-heading">Products</h3>
+        <ul class="footer-links">
+          <li><a href="lowers.html">Lowers &amp; Track Pants</a></li>
+          <li><a href="jackets.html">Jackets</a></li>
+          <li><a href="products.html">All Products</a></li>
+          <li><a href="contact.html#quote">Private Label Inquiry</a></li>
+        </ul>
+      </nav>
+
+      {{-- Company --}}
+      <nav class="lg:col-span-2" aria-label="Company">
+        <h3 class="footer-heading">Company</h3>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="manufacturing.html">Manufacturing</a></li>
+          <li><a href="quality.html">Quality Assurance</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      {{-- Contact --}}
+      <div class="lg:col-span-3">
+        <h3 class="footer-heading">Contact</h3>
+        <!-- @include components/contact-lines.html -->
+      </div>
+    </div>
+
+    {{-- Bottom bar --}}
+    <div class="mt-16 flex flex-col-reverse gap-6 border-t border-rule py-8 md:flex-row md:items-center md:justify-between">
+      <div class="grid gap-2">
+        <p class="t-small">&copy; {{ year }} {{ site.name }}. All rights reserved.</p>
+        <!-- @if site.photoNotice --><p class="t-small">{{ site.photoNotice }}</p><!-- @endif -->
+      </div>
+
+      <ul class="flex items-center gap-3">
+        <!-- @if site.instagram -->
+        <li><a class="social-link" href="{{ site.instagram }}" target="_blank" rel="noopener"><!-- @include icons/brand/instagram.svg --><span class="sr-only">Instagram (opens in a new tab)</span></a></li>
+        <!-- @endif -->
+        <!-- @if site.facebook -->
+        <li><a class="social-link" href="{{ site.facebook }}" target="_blank" rel="noopener"><!-- @include icons/brand/facebook.svg --><span class="sr-only">Facebook (opens in a new tab)</span></a></li>
+        <!-- @endif -->
+        <!-- @if site.linkedin -->
+        <li><a class="social-link" href="{{ site.linkedin }}" target="_blank" rel="noopener"><!-- @include icons/brand/linkedin.svg --><span class="sr-only">LinkedIn (opens in a new tab)</span></a></li>
+        <!-- @endif -->
+        <!-- @if site.whatsappNumber -->
+        <li><a class="social-link" href="https://wa.me/{{ site.whatsappNumber }}" target="_blank" rel="noopener"><!-- @include icons/brand/whatsapp.svg --><span class="sr-only">WhatsApp (opens in a new tab)</span></a></li>
+        <!-- @endif -->
+      </ul>
+    </div>
+  </div>
+</footer>

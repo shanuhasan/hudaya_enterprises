@@ -1,0 +1,33 @@
+{{--
+  Component: page-hero — editorial hero for inner pages.
+  Params:
+    eyebrow, title, titleEm (italic end of the title), lead             (required)
+    crumb                       current page name for the breadcrumb    (required)
+    crumbParent, crumbParentHref   optional middle breadcrumb level
+    src, alt, brief             background image slot (see media.html)  (required)
+    heroSize                    "page" (default) | "compact"
+  Use with <body data-header="overlay">.
+--}}
+<section class="hero hero--{{ heroSize ?? 'page' }} surface-ink" aria-labelledby="page-title">
+  <div class="hero__media" aria-hidden="true">
+    <!-- @include components/media.html {"imgClass": "hero-settle", "loading": "eager", "priority": "high"} -->
+  </div>
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="container-site hero__inner">
+    <div class="hero__content grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-8">
+        <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <!-- @if crumbParent --><li><a href="{{ crumbParentHref }}">{{ crumbParent }}</a></li><!-- @endif -->
+            <li><span aria-current="page">{{ crumb }}</span></li>
+          </ol>
+        </nav>
+        <p class="eyebrow mt-10" data-reveal>{{ eyebrow }}</p>
+        <h1 id="page-title" class="t-h1 mt-6" data-reveal>{{ title }} <span class="t-em">{{ titleEm }}</span></h1>
+      </div>
+      <p class="hero__lead lg:col-span-4" data-reveal>{{ lead }}</p>
+    </div>
+  </div>
+</section>

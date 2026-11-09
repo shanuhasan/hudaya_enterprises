@@ -1,0 +1,30 @@
+{{--
+  Component: cta-band — closing call to action used at the end of every page.
+  Optional params: ctaEyebrow, ctaTitle, ctaTitleEm, ctaText (defaults below)
+--}}
+<section class="surface-ink-2 section-y rule-top" aria-labelledby="cta-band-title">
+  <div class="container-site">
+    <div class="section-head section-head--center max-w-4xl" data-reveal>
+      <p class="eyebrow">{{ ctaEyebrow ?? 'Start a project' }}</p>
+      <h2 id="cta-band-title" class="cta-band__title">{{ ctaTitle ?? 'Your vision.' }} <span class="t-em">{{ ctaTitleEm ?? 'Our craftsmanship.' }}</span></h2>
+      <p class="t-lead mx-auto">
+        {{ ctaText ?? 'Share your design, quantity and timeline. We will respond with sampling options and a production quote.' }}
+      </p>
+      <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <a href="contact.html#quote" class="btn btn-primary">
+          Request a Quote
+          <i data-lucide="arrow-right"></i>
+        </a>
+        <!-- @if site.whatsappNumber -->
+        <a href="https://wa.me/{{ site.whatsappNumber }}?text={{ site.whatsappMessage | url }}" target="_blank" rel="noopener" class="btn btn-secondary">
+          <!-- @include icons/brand/whatsapp.svg -->
+          WhatsApp Us<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <!-- @endif -->
+        <!-- @if !site.whatsappNumber -->
+        <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+        <!-- @endif -->
+      </div>
+    </div>
+  </div>
+</section>

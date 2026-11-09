@@ -1,0 +1,21 @@
+{{--
+  Component: stage — one production or inspection stage (image + numbered text).
+  Params:
+    id, num, title, text          (required)
+    src, alt, brief               image slot (see media.html)
+    variant                       "default" | "reverse" (image on the right)
+    outcome                       optional one-line result of the stage
+--}}
+<article id="{{ id }}" class="stage stage--{{ variant ?? 'default' }}">
+  <div class="stage__media-wrap stage__media" data-reveal>
+    <!-- @include components/media.html {"class": "h-full"} -->
+  </div>
+  <div class="stage__body" data-reveal>
+    <span class="stage__num">{{ num }}</span>
+    <h3 class="stage__title">{{ title }}</h3>
+    <p class="stage__text">{{ text }}</p>
+    <!-- @if outcome -->
+    <p class="stage__outcome"><strong>Outcome</strong><span>{{ outcome }}</span></p>
+    <!-- @endif -->
+  </div>
+</article>

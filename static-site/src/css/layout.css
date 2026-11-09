@@ -1,0 +1,78 @@
+/* ==========================================================================
+   LAYOUT — container, section rhythm, grid, surfaces.
+   ========================================================================== */
+
+/* ---- Container: one width for the whole site (1440px + responsive gutters) ---- */
+@utility container-site {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ---- Section vertical rhythm ---- */
+@utility section-y {
+  padding-block: var(--section-y);
+}
+
+@utility section-y-compact {
+  padding-block: var(--section-y-compact);
+}
+
+/* ---- 12-column editorial grid ---- */
+@utility grid-site {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+/* ==========================================================================
+   SURFACES
+   Every section declares one surface. Components read these variables,
+   so the same markup works on dark or light backgrounds.
+   ========================================================================== */
+
+:root,
+.surface-ink,
+.surface-ink-2,
+.surface-graphite {
+  --fg: color-mix(in srgb, var(--color-bone) 82%, transparent);
+  --fg-muted: color-mix(in srgb, var(--color-bone) 70%, transparent);
+  --fg-strong: var(--color-white);
+  --line: color-mix(in srgb, var(--color-bone) 12%, transparent);
+  --line-strong: color-mix(in srgb, var(--color-bone) 40%, transparent);
+  --accent-text: var(--color-champagne);
+  --ph-bg: var(--color-graphite);
+  color-scheme: dark;
+}
+
+.surface-bone,
+.surface-white {
+  --fg: var(--color-graphite);
+  --fg-muted: var(--color-graphite);
+  --fg-strong: var(--color-ink);
+  --line: var(--color-line);
+  --line-strong: var(--color-mute);
+  --accent-text: var(--color-graphite);   /* champagne is too low-contrast for small text on light */
+  --ph-bg: color-mix(in srgb, var(--color-ink) 6%, var(--color-bone));
+  color-scheme: light;
+}
+
+.surface-ink      { --surface-bg: var(--color-ink); }
+.surface-ink-2    { --surface-bg: var(--color-ink-2); }
+.surface-graphite { --surface-bg: var(--color-graphite); --ph-bg: var(--color-ink-2); }
+.surface-bone     { --surface-bg: var(--color-bone); }
+.surface-white    { --surface-bg: var(--color-white); }
+
+.surface-ink,
+.surface-ink-2,
+.surface-graphite,
+.surface-bone,
+.surface-white {
+  background-color: var(--surface-bg);
+  color: var(--fg);
+}
+
+/* Thin rule between stacked sections of the same surface */
+.rule-top { border-top: 1px solid var(--line); }
+.rule-bottom { border-bottom: 1px solid var(--line); }

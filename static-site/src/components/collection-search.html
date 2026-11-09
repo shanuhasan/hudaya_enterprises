@@ -1,0 +1,13 @@
+{{--
+  Component: collection-search — live product search (works with the filter tabs).
+  Params: searchId (unique id), searchLabel (e.g. "Search lowers")
+  Place inside a [data-collection-filter] section, next to the .filter-tabs.
+--}}
+<div class="search-field" role="search">
+  <i data-lucide="search"></i>
+  <label class="sr-only" for="search-{{ searchId }}">{{ searchLabel ?? 'Search styles' }}</label>
+  <input class="search-field__input" id="search-{{ searchId }}" type="search" placeholder="{{ searchLabel ?? 'Search styles' }}" autocomplete="off" spellcheck="false" enterkeyhint="search" data-collection-search>
+  <button type="button" class="search-field__clear" data-search-clear hidden>
+    <i data-lucide="x"></i><span class="sr-only">Clear search</span>
+  </button>
+</div>
