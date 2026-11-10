@@ -27,7 +27,7 @@ class DatabaseTest extends TestCase
 
     public function test_seeders_load_the_approved_content(): void
     {
-        $this->assertDatabaseCount('settings', 18);
+        $this->assertDatabaseCount('settings', 19);
         $this->assertDatabaseCount('pages', 7);
         $this->assertSame(['lowers', 'jackets'], Category::query()->ordered()->pluck('slug')->all());
         $this->assertDatabaseCount('product_types', 12);

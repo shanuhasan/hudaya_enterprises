@@ -16,6 +16,7 @@ class SettingSeeder extends Seeder
         // key => [group, type, label, help]
         $definitions = [
             'name' => ['company', 'text', 'Company name', null],
+            'logo' => ['company', 'image', 'Logo (light version for dark backgrounds)', 'PNG with a transparent background. Empty = the supplied Hudaya logo.'],
             'tagline' => ['company', 'text', 'Tagline', null],
             'tagline_alt' => ['company', 'text', 'Secondary tagline', null],
             'intro' => ['company', 'textarea', 'Short introduction', 'Footer text and structured data description.'],

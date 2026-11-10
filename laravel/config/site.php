@@ -13,6 +13,7 @@
 
 return [
     'name' => 'Hudaya Enterprises',
+    'logo' => '',
     'tagline' => 'Crafted with precision. Built for excellence.',
     'tagline_alt' => 'Your vision. Our craftsmanship.',
     'announcement' => 'Lowers, track pants & jackets — manufactured for brands, retailers and bulk buyers',

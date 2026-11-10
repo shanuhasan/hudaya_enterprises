@@ -5,6 +5,10 @@
    ========================================================================== */
 
 @import "tailwindcss" source("../");
+/* The admin panel has its own stylesheet (admin.css) — keep its classes out of the public CSS. */
+@source not "../views/admin";
+@source not "../views/components/admin";
+@source not "../js/admin.js";
 
 /* Self-hosted fonts (Latin subset, only the weights the design uses).
    No third-party requests; files are bundled and cached with the site. */

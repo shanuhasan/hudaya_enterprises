@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'category_id', 'name', 'slug', 'type_label', 'image', 'image_alt',
+        'category_id', 'name', 'slug', 'type_label', 'description', 'material', 'sizes', 'moq', 'image', 'image_alt',
         'featured_position', 'sort_order', 'is_active',
     ];
 
@@ -23,6 +24,7 @@ class Product extends Model
         return [
             'is_active' => 'boolean',
             'featured_position' => 'integer',
+            'sizes' => 'array',
         ];
     }
 
@@ -44,6 +46,16 @@ class Product extends Model
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(ProductType::class)->orderBy('sort_order');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('sort_order')->orderBy('id');
+    }
+
+    public function isFeatured(): bool
+    {
+        return $this->featured_position !== null;
     }
 
     /** Space-separated type slugs for the filter grid (data-category), e.g. "mens sports". */
