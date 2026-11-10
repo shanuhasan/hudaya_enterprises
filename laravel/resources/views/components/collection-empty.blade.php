@@ -1,0 +1,9 @@
+{{-- Component: collection-empty — shown when the filter + search match nothing. --}}
+<div class="collection-empty mt-14" data-filter-empty hidden>
+  <h3 class="t-h3">No styles match <span data-empty-query></span>.</h3>
+  <p class="t-body">Try a different word or category — or tell us what you are looking for. We manufacture to your specification.</p>
+  <div class="flex flex-wrap items-center gap-6">
+    <button type="button" class="btn btn-secondary btn-sm" data-filter-reset>Show all styles</button>
+    <a href="{{ route('contact') }}#quote" class="link-arrow">Request a custom style <i data-lucide="arrow-right"></i></a>
+  </div>
+</div>

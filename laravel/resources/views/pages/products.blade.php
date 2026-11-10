@@ -1,0 +1,151 @@
+{{-- Converted from static-site/src/products.html (Module 1). Data becomes dynamic in later modules. --}}
+<x-layouts.app :title="'Products'" :description="'Lowers, track pants and jackets manufactured to your design, fabric and branding requirements by Hudaya Enterprises.'" nav-active="products">
+  <main id="main">
+    <x-page-hero :crumb="'Products'" :eyebrow="'Our products'" :title="'Two categories,'" :title-em="'made to order.'" :lead="'Lowers and jackets manufactured to your design, fabric and branding requirements.'" :src="'images/placeholders/hero/products.jpg'" :alt="''" :brief="'Products hero · black track pants and jacket flat-lay · dark backdrop · 16:9'" />
+
+    {{-- ============================================================ INTRO --}}
+    <section class="surface-bone section-y" aria-labelledby="products-intro-title">
+      <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
+        <div class="lg:col-span-6" data-reveal>
+          <p class="eyebrow">01 / Made to order</p>
+          <h2 id="products-intro-title" class="t-h2 mt-8">Every product starts with <span class="t-em">your specification.</span></h2>
+          <p class="t-lead mt-8">We do not sell ready stock. Each style is developed and produced for your brand, from fabric and fit to labels and packing.</p>
+        </div>
+        <div class="lg:col-span-5 lg:col-start-8" data-reveal>
+          <dl class="spec-list">
+            <div class="spec-list__row"><dt>Design</dt><dd>Your design, tech pack or a reference style</dd></div>
+            <div class="spec-list__row"><dt>Fabric</dt><dd>Agreed with you during sampling</dd></div>
+            <div class="spec-list__row"><dt>Sizing</dt><dd>Made to your size chart</dd></div>
+            <div class="spec-list__row"><dt>Branding</dt><dd>Your labels, trims and finishing</dd></div>
+            <div class="spec-list__row"><dt>Order types</dt><dd>Sample, bulk and repeat orders</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ CATEGORY SHOWCASES --}}
+    <section class="surface-ink section-y" aria-labelledby="categories-title">
+      <div class="container-site">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">02 / Categories</p>
+          <h2 id="categories-title" class="t-h2">Explore the <span class="t-em">collections.</span></h2>
+        </div>
+
+        <div class="mt-16">
+          <article class="showcase">
+            <a href="{{ route('products.category', 'lowers') }}" class="showcase__media category-tile" data-reveal tabindex="-1" aria-hidden="true">
+              <x-media :class="'h-full category-tile__media'" :src="'images/placeholders/lowers/category-lowers.jpg'" :alt="'Black track pants photographed in a studio'" :brief="'Black track pants · studio · dark backdrop · 4:5'" />
+            </a>
+            <div class="showcase__body" data-reveal>
+              <span class="showcase__index">01</span>
+              <h3 class="t-h2 mt-6">Lowers &amp; <span class="t-em">Track Pants</span></h3>
+              <p class="t-body mt-6">Track pants, joggers, sports and casual lowers for men and women — made in the fabric, fit and finish your brand needs.</p>
+              <ul class="subtype-list mt-8">
+                <li>Men's</li><li>Women's</li><li>Joggers</li><li>Sports</li><li>Casual</li><li>Custom</li>
+              </ul>
+              <div class="mt-10 flex flex-wrap gap-3">
+                <a href="{{ route('products.category', 'lowers') }}" class="btn btn-primary">View Lowers <i data-lucide="arrow-right"></i></a>
+                <a href="{{ route('contact') }}?category=lowers#quote" class="btn btn-secondary">Request a Quote</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="showcase showcase--reverse">
+            <a href="{{ route('products.category', 'jackets') }}" class="showcase__media category-tile" data-reveal tabindex="-1" aria-hidden="true">
+              <x-media :class="'h-full category-tile__media'" :src="'images/placeholders/jackets/category-jackets.jpg'" :alt="'Black track jacket on a dark background'" :brief="'Black track jacket · dark backdrop · 4:5'" />
+            </a>
+            <div class="showcase__body" data-reveal>
+              <span class="showcase__index">02</span>
+              <h3 class="t-h2 mt-6">Jackets</h3>
+              <p class="t-body mt-6">Sports, track, winter and fashion jackets for men and women — developed from your design and produced to your specification.</p>
+              <ul class="subtype-list mt-8">
+                <li>Men's</li><li>Women's</li><li>Sports</li><li>Track</li><li>Winter</li><li>Custom</li>
+              </ul>
+              <div class="mt-10 flex flex-wrap gap-3">
+                <a href="{{ route('products.category', 'jackets') }}" class="btn btn-primary">View Jackets <i data-lucide="arrow-right"></i></a>
+                <a href="{{ route('contact') }}?category=jackets#quote" class="btn btn-secondary">Request a Quote</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ CUSTOMISATION --}}
+    <section class="surface-bone section-y" aria-labelledby="custom-title">
+      <div class="container-site">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div class="section-head lg:col-span-6" data-reveal>
+            <p class="eyebrow">03 / Customisation</p>
+            <h2 id="custom-title" class="t-h2">Details you can <span class="t-em">specify.</span></h2>
+          </div>
+          <p class="t-lead lg:col-span-4 lg:col-start-9" data-reveal>Tell us what you need. Feasibility of each option is confirmed with you during sampling.</p>
+        </div>
+
+        <ul class="feature-grid mt-16" data-reveal-group>
+          <li class="feature" data-reveal>
+            <span class="feature__num">i.</span>
+            <h3 class="feature__title">Fabric &amp; weight</h3>
+            <p class="feature__text">Choose fabric type, composition and weight to suit the product and price point.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">ii.</span>
+            <h3 class="feature__title">Colours</h3>
+            <p class="feature__text">Body, panel and trim colours matched to your collection.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">iii.</span>
+            <h3 class="feature__title">Sizing &amp; fit</h3>
+            <p class="feature__text">Garments made to your size chart, fit and grading requirements.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">iv.</span>
+            <h3 class="feature__title">Branding &amp; labels</h3>
+            <p class="feature__text">Your brand labels, care labels and tags for private label production.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">v.</span>
+            <h3 class="feature__title">Trims &amp; details</h3>
+            <p class="feature__text">Zips, drawcords, pockets, cuffs, panels and piping to your design.</p>
+          </li>
+          <li class="feature" data-reveal>
+            <span class="feature__num">vi.</span>
+            <h3 class="feature__title">Packing</h3>
+            <p class="feature__text">Folding, tagging and packing prepared to your requirements.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    {{-- ============================================================ FEATURED --}}
+    <section id="styles" class="surface-ink-2 section-y" aria-labelledby="featured-title" data-collection-filter>
+      <div class="container-site">
+        <div class="flex flex-col gap-10">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">04 / Featured</p>
+            <h2 id="featured-title" class="t-h2">Featured <span class="t-em">styles.</span></h2>
+          </div>
+          <div class="collection-tools" data-reveal>
+            <div class="filter-tabs" role="group" aria-label="Filter styles by category">
+              <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-tab" data-filter="lowers" aria-pressed="false">Lowers</button>
+              <button type="button" class="filter-tab" data-filter="jackets" aria-pressed="false">Jackets</button>
+            </div>
+            <x-collection-search :search-id="'products'" :search-label="'Search styles'" />
+          </div>
+        </div>
+        <p class="sr-only" data-filter-status aria-live="polite"></p>
+        <x-collection-empty />
+
+        <div class="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 md:gap-x-6 lg:grid-cols-4 lg:gap-y-16" data-reveal-group>
+          <x-product-card :name="'Classic Track Pant'" :category="'Lowers'" :type="'Track Pants'" :filter="'lowers'" :src="'images/placeholders/lowers/classic-track-pant.jpg'" :alt="'Black track pant with side panel'" :brief="'Black track pant · full length · studio · 4:5'" />
+          <x-product-card :name="'Tapered Jogger'" :category="'Lowers'" :type="'Joggers'" :filter="'lowers'" :src="'images/placeholders/lowers/tapered-jogger.jpg'" :alt="'Tapered jogger with ribbed cuffs'" :brief="'Tapered jogger · ribbed cuffs · studio · 4:5'" />
+          <x-product-card :name="'Zip Track Jacket'" :category="'Jackets'" :type="'Track Jacket'" :filter="'jackets'" :src="'images/placeholders/jackets/zip-track-jacket.jpg'" :alt="'Full-zip track jacket'" :brief="'Full-zip track jacket · studio · 4:5'" />
+          <x-product-card :name="'Quilted Winter Jacket'" :category="'Jackets'" :type="'Winter'" :filter="'jackets'" :src="'images/placeholders/jackets/quilted-winter-jacket.jpg'" :alt="'Quilted winter jacket'" :brief="'Quilted winter jacket · studio · 4:5'" />
+        </div>
+      </div>
+    </section>
+
+    <x-cta-band :eyebrow="'Private label & bulk'" :title="'Have a design'" :title-em="'in mind?'" :text="'Send us your design, reference or tech pack with estimated quantities, and we will come back with sampling options and a quote.'" />
+  </main>
+</x-layouts.app>

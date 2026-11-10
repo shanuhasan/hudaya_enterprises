@@ -1,0 +1,107 @@
+{{-- Converted from static-site/src/jackets.html (Module 1). Data becomes dynamic in later modules. --}}
+<x-layouts.app :title="'Jackets'" :description="'Men\'s and women\'s jackets, sports, track and winter jackets and custom jackets, manufactured to order by Hudaya Enterprises.'" nav-active="products">
+  <main id="main">
+    <x-page-hero :crumb="'Jackets'" :crumb-parent="'Products'" :crumb-parent-href="route('products.index')" :eyebrow="'Collection 02'" :title="'Jackets,'" :title-em="'built to last.'" :lead="'Men\'s and women\'s sports, track and winter jackets, made to your specification.'" :src="'images/placeholders/hero/jackets.jpg'" :alt="''" :brief="'Jackets hero · model in black track jacket · studio · dark backdrop · 16:9'" />
+
+    {{-- ============================================================ INTRO --}}
+    <section class="surface-bone section-y" aria-labelledby="jackets-intro-title">
+      <div class="container-site grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-6">
+        <div class="lg:col-span-5" data-reveal>
+          <x-media :class="'aspect-[4/5]'" :src="'images/placeholders/details/zip-detail.jpg'" :alt="'Close-up of a jacket zip and pull'" :brief="'Jacket zip & collar close-up · 4:5'" />
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+          <p class="eyebrow">01 / The collection</p>
+          <h2 id="jackets-intro-title" class="t-h2 mt-8">Structure, warmth and <span class="t-em">finish.</span></h2>
+          <p class="t-lead mt-8">Jackets demand precise construction — clean zips, balanced panels and neat finishing. Each style is sampled and approved before bulk production.</p>
+          <a href="#styles" class="link-arrow mt-10">Browse styles <i data-lucide="arrow-down"></i></a>
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ TYPES --}}
+    <section class="surface-ink section-y" aria-labelledby="jackets-types-title">
+      <div class="container-site">
+        <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div class="section-head lg:col-span-6" data-reveal>
+            <p class="eyebrow">02 / Range</p>
+            <h2 id="jackets-types-title" class="t-h2">A jacket for every <span class="t-em">season.</span></h2>
+          </div>
+          <p class="t-lead lg:col-span-4 lg:col-start-9" data-reveal>Choose a type to see example styles, or tell us about your own design.</p>
+        </div>
+
+        <div class="mt-16 grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3" data-reveal-group>
+          <x-type-card :index="'01'" :title="'Men\'s Jackets'" :text="'Track, sports and winter jackets cut for men\'s fits and sizing.'" :filter-key="'mens'" :src="'images/placeholders/jackets/type-mens.jpg'" :alt="'Men\'s black jacket'" :brief="'Men\'s jacket · studio · 4:5'" />
+          <x-type-card :index="'02'" :title="'Women\'s Jackets'" :text="'Jackets developed for women\'s fits, lengths and proportions.'" :filter-key="'womens'" :src="'images/placeholders/jackets/type-womens.jpg'" :alt="'Women\'s black jacket'" :brief="'Women\'s jacket · studio · 4:5'" />
+          <x-type-card :index="'03'" :title="'Sports Jackets'" :text="'Lightweight training jackets and windcheaters for active use.'" :filter-key="'sports'" :src="'images/placeholders/jackets/type-sports.jpg'" :alt="'Lightweight sports jacket'" :brief="'Sports jacket · in motion · 4:5'" />
+          <x-type-card :index="'04'" :title="'Track Jackets'" :text="'Full-zip track tops with collars, cuffs and panel details.'" :filter-key="'track'" :src="'images/placeholders/jackets/type-track.jpg'" :alt="'Full-zip track jacket'" :brief="'Track jacket · full zip · 4:5'" />
+          <x-type-card :index="'05'" :title="'Winter Jackets'" :text="'Padded, quilted and fleece-lined jackets for colder months.'" :filter-key="'winter'" :src="'images/placeholders/jackets/type-winter.jpg'" :alt="'Quilted winter jacket'" :brief="'Winter jacket · quilted · 4:5'" />
+          <x-type-card :index="'06'" :title="'Custom Jackets'" :text="'Your own design, fabric and branding, developed from a sample.'" :filter-key="'custom'" :src="'images/placeholders/jackets/type-custom.jpg'" :alt="'Jacket with a custom brand label'" :brief="'Custom jacket · label detail · 4:5'" />
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ STYLES (filterable) --}}
+    <section id="styles" class="surface-ink-2 section-y" aria-labelledby="jackets-styles-title" data-collection-filter>
+      <div class="container-site">
+        <div class="flex flex-col gap-10">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">03 / Example styles</p>
+            <h2 id="jackets-styles-title" class="t-h2">Example <span class="t-em">styles.</span></h2>
+            <p class="t-lead">Reference styles to start the conversation. Each can be adapted to your fabric, colour, fit and branding.</p>
+          </div>
+          <div class="collection-tools" data-reveal>
+            <div class="filter-tabs" role="group" aria-label="Filter jackets by type">
+              <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-tab" data-filter="mens" aria-pressed="false">Men's</button>
+              <button type="button" class="filter-tab" data-filter="womens" aria-pressed="false">Women's</button>
+              <button type="button" class="filter-tab" data-filter="sports" aria-pressed="false">Sports</button>
+              <button type="button" class="filter-tab" data-filter="track" aria-pressed="false">Track</button>
+              <button type="button" class="filter-tab" data-filter="winter" aria-pressed="false">Winter</button>
+              <button type="button" class="filter-tab" data-filter="custom" aria-pressed="false">Custom</button>
+            </div>
+            <x-collection-search :search-id="'jackets'" :search-label="'Search jackets'" />
+          </div>
+        </div>
+        <p class="sr-only" data-filter-status aria-live="polite"></p>
+        <x-collection-empty />
+
+        <div class="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 md:gap-x-6 lg:grid-cols-4 lg:gap-y-16" data-reveal-group>
+          <x-product-card :name="'Men\'s Full-Zip Track Jacket'" :category="'Jackets'" :type="'Men\'s · Track'" :filter="'mens track'" :page="'jackets'" :src="'images/placeholders/jackets/zip-track-jacket.jpg'" :alt="'Men\'s full-zip track jacket'" :brief="'Men\'s full-zip track jacket · studio · 4:5'" />
+          <x-product-card :name="'Women\'s Cropped Track Jacket'" :category="'Jackets'" :type="'Women\'s · Track'" :filter="'womens track'" :page="'jackets'" :src="'images/placeholders/jackets/womens-cropped.jpg'" :alt="'Women\'s cropped track jacket'" :brief="'Women\'s cropped track jacket · studio · 4:5'" />
+          <x-product-card :name="'Sports Windcheater'" :category="'Jackets'" :type="'Sports'" :filter="'sports mens womens'" :page="'jackets'" :src="'images/placeholders/jackets/windcheater.jpg'" :alt="'Lightweight sports windcheater'" :brief="'Sports windcheater · studio · 4:5'" />
+          <x-product-card :name="'Training Jacket'" :category="'Jackets'" :type="'Sports'" :filter="'sports mens'" :page="'jackets'" :src="'images/placeholders/jackets/training-jacket.jpg'" :alt="'Lightweight training jacket'" :brief="'Training jacket · studio · 4:5'" />
+          <x-product-card :name="'Quilted Puffer Jacket'" :category="'Jackets'" :type="'Winter'" :filter="'winter mens'" :page="'jackets'" :src="'images/placeholders/jackets/quilted-winter-jacket.jpg'" :alt="'Quilted puffer jacket'" :brief="'Quilted puffer jacket · studio · 4:5'" />
+          <x-product-card :name="'Women\'s Padded Jacket'" :category="'Jackets'" :type="'Women\'s · Winter'" :filter="'winter womens'" :page="'jackets'" :src="'images/placeholders/jackets/womens-padded.jpg'" :alt="'Women\'s padded jacket'" :brief="'Women\'s padded jacket · studio · 4:5'" />
+          <x-product-card :name="'Bomber Jacket'" :category="'Jackets'" :type="'Men\'s · Fashion'" :filter="'mens'" :page="'jackets'" :src="'images/placeholders/jackets/bomber-jacket.jpg'" :alt="'Black bomber jacket'" :brief="'Black bomber jacket · studio · 4:5'" />
+          <x-product-card :name="'Private Label Jacket'" :category="'Jackets'" :type="'Custom'" :filter="'custom'" :page="'jackets'" :src="'images/placeholders/jackets/type-custom.jpg'" :alt="'Jacket with a custom brand label'" :brief="'Private label jacket · label detail · 4:5'" />
+        </div>
+      </div>
+    </section>
+
+    {{-- ============================================================ DETAILS --}}
+    <section class="surface-bone section-y" aria-labelledby="jackets-details-title">
+      <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
+        <div class="lg:col-span-5">
+          <div class="section-head" data-reveal>
+            <p class="eyebrow">04 / Details</p>
+            <h2 id="jackets-details-title" class="t-h2">Details you can <span class="t-em">specify.</span></h2>
+            <p class="t-lead">Every element of the garment can be discussed. Availability of each option is confirmed during sampling.</p>
+          </div>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7" data-reveal>
+          <dl class="spec-list">
+            <div class="spec-list__row"><dt>Fabric</dt><dd>Shell fabric type, composition and weight</dd></div>
+            <div class="spec-list__row"><dt>Closure</dt><dd>Full zip, half zip or press studs</dd></div>
+            <div class="spec-list__row"><dt>Collar &amp; hood</dt><dd>Stand collar, hood or collarless</dd></div>
+            <div class="spec-list__row"><dt>Lining</dt><dd>Unlined, mesh, fleece or padded</dd></div>
+            <div class="spec-list__row"><dt>Pockets</dt><dd>Side, zip, chest or inner pockets</dd></div>
+            <div class="spec-list__row"><dt>Cuffs &amp; hem</dt><dd>Ribbed, elasticated or adjustable</dd></div>
+            <div class="spec-list__row"><dt>Branding</dt><dd>Labels, tags and logo placement</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <x-cta-band :eyebrow="'Jacket manufacturing'" :title="'Request a quote'" :title-em="'for jackets.'" :text="'Share your style, fabric preferences and estimated quantities, and we will respond with sampling options and a quote.'" />
+  </main>
+</x-layouts.app>

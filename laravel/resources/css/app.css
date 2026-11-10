@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Hudaya Enterprises — CSS entry
+   Order matters: Tailwind → tokens → base → layout → components.
+   This file (and its imports) moves unchanged to Laravel resources/css/.
+   ========================================================================== */
+
+@import "tailwindcss" source("../");
+
+/* Self-hosted fonts (Latin subset, only the weights the design uses).
+   No third-party requests; files are bundled and cached with the site. */
+@import "@fontsource/cormorant-garamond/latin-400.css";
+@import "@fontsource/cormorant-garamond/latin-500.css";
+@import "@fontsource/cormorant-garamond/latin-400-italic.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./sections.css";
+@import "./pages.css";
+@import "./interactions.css";
