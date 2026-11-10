@@ -23,6 +23,7 @@
           <i data-lucide="search"></i>
           <input class="adm-input" type="search" name="q" value="{{ request('q') }}" placeholder="Name, company, email, phone">
         </label>
+        <button type="submit" class="sr-only">Search</button>
       </form>
     </div>
 

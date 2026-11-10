@@ -10,16 +10,16 @@
 </head>
 <body>
   <div class="adm-login">
-    <div class="adm-login__brand">
+    <aside class="adm-login__brand" aria-label="{{ $site->name }}">
       <img src="{{ asset($site->logo ?: 'images/brand/logo-lockup-light.png') }}" alt="{{ $site->name }}" class="h-11 w-auto self-start">
       <div>
         <p class="adm-eyebrow">Admin panel</p>
         <p class="mt-4 max-w-md font-serif text-5xl leading-tight">{{ $site->tagline }}</p>
       </div>
-      <p class="text-xs text-mute">&copy; {{ date('Y') }} {{ $site->name }}</p>
-    </div>
+      <p class="text-xs text-[#a5a5a0]">&copy; {{ date('Y') }} {{ $site->name }}</p>
+    </aside>
 
-    <div class="adm-login__panel">
+    <main class="adm-login__panel" id="main">
       <div class="adm-login__box">
         <p class="adm-eyebrow">{{ $site->name }}</p>
         <h1 class="adm-title">Sign in</h1>
@@ -37,7 +37,7 @@
           <button type="submit" class="adm-btn adm-btn--primary adm-btn--block mt-2">Sign in <i data-lucide="arrow-right"></i></button>
         </form>
       </div>
-    </div>
+    </main>
   </div>
 </body>
 </html>

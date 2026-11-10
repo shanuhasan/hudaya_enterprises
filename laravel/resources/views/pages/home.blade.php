@@ -1,24 +1,23 @@
-{{-- Converted from static-site/src/index.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'Premium Lowers & Jackets Manufacturer'" :description="'Premium lowers, track pants and jackets manufactured for clothing brands, retailers, wholesalers and private label businesses. Request a quote.'" nav-active="home">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="home">
   <main id="main">
 
     {{-- ============================================================ 3. HERO --}}
     <section class="hero surface-ink" aria-labelledby="hero-title">
       <div class="hero__media" aria-hidden="true">
-        <x-media :src="'images/placeholders/hero/hero-main.jpg'" :alt="''" :brief="'Hero · Model in black track jacket and track pants · studio light · dark backdrop · 16:9'" :img-class="'hero-settle'" :loading="'eager'" :priority="'high'" />
+        <x-media :src="$page->hero_image" :alt="$page->hero_image_alt" brief="Home hero image" img-class="hero-settle" loading="eager" priority="high" />
       </div>
       <div class="hero__overlay" aria-hidden="true"></div>
 
       <div class="container-site hero__inner">
         <div class="hero__content">
-          <p class="eyebrow" data-reveal>Garment Manufacturing Excellence</p>
+          <p class="eyebrow" data-reveal>{{ $page->hero_eyebrow }}</p>
           <h1 id="hero-title" class="t-display mt-8" data-reveal>
-            Crafted with <span class="t-em">precision.</span><br>
-            Built for excellence.
+            {{ $page->hero_title }} <span class="t-em">{{ $page->hero_title_em }}</span>@if ($page->hero_title_line2)<br>
+            {{ $page->hero_title_line2 }}@endif
           </h1>
           <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
             <p class="hero__lead lg:col-span-5" data-reveal>
-              Premium lower and jacket manufacturing for brands, retailers and businesses.
+              {{ $page->hero_lead }}
             </p>
             <div class="flex flex-col gap-3 sm:flex-row lg:col-span-6 lg:col-start-7 lg:justify-end" data-reveal>
               <a href="{{ route('products.index') }}" class="btn btn-primary">
@@ -31,16 +30,14 @@
         </div>
 
         <nav class="hero__strip" aria-label="Collections">
-          <a href="{{ route('products.category', 'lowers') }}" class="hero__strip-item">
-            <span><span class="hero__strip-index">01</span>Lowers &amp; Track Pants</span>
+          @foreach ($categories as $category)
+          <a href="{{ route('products.category', $category) }}" class="hero__strip-item">
+            <span><span class="hero__strip-index">{{ sprintf('%02d', $loop->iteration) }}</span>{{ trim($category->title.' '.$category->title_em) }}</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
-          <a href="{{ route('products.category', 'jackets') }}" class="hero__strip-item">
-            <span><span class="hero__strip-index">02</span>Jackets</span>
-            <i data-lucide="arrow-up-right"></i>
-          </a>
+          @endforeach
           <a href="{{ route('contact') }}#quote" class="hero__strip-item">
-            <span><span class="hero__strip-index">03</span>Private Label &amp; Bulk</span>
+            <span><span class="hero__strip-index">{{ sprintf('%02d', $categories->count() + 1) }}</span>Private Label &amp; Bulk</span>
             <i data-lucide="arrow-up-right"></i>
           </a>
           <a href="#about" class="scroll-cue">Scroll <i data-lucide="arrow-down"></i></a>
@@ -109,35 +106,25 @@
         </div>
 
         <div class="mt-16 grid gap-16 lg:grid-cols-12 lg:gap-6">
-          <div class="lg:col-span-7" data-reveal>
-            <a href="{{ route('products.category', 'lowers') }}" class="category-tile">
-              <x-media :class="'category-tile__media'" :src="'images/placeholders/lowers/category-lowers.jpg'" :alt="'Black track pants photographed in a studio'" :brief="'Black track pants · studio · dark backdrop · 4:5'" />
+          @foreach ($categories as $category)
+          {{-- Staggered layout: wide tile, then a narrower one set lower — repeating. --}}
+          <div class="{{ $loop->odd ? 'lg:col-span-7' : 'lg:col-span-5 lg:mt-40' }}" data-reveal>
+            <a href="{{ route('products.category', $category) }}" class="category-tile">
+              <x-media class="category-tile__media" :src="$category->card_image" :alt="$category->card_image_alt" :brief="$category->name" />
               <div class="media-overlay z-[1]" aria-hidden="true"></div>
               <div class="category-tile__content">
-                <span class="category-tile__index">01 / Collection</span>
-                <h3 class="category-tile__title">Lowers &amp; <span class="t-em">Track Pants</span></h3>
+                <span class="category-tile__index">{{ sprintf('%02d', $loop->iteration) }} / Collection</span>
+                <h3 class="category-tile__title">{{ $category->title }}@if ($category->title_em) <span class="t-em">{{ $category->title_em }}</span>@endif</h3>
                 <span class="link-arrow">View collection <i data-lucide="arrow-right"></i></span>
               </div>
             </a>
+            @if ($category->highlights)
             <ul class="subtype-list mt-6">
-              <li>Track pants</li><li>Joggers</li><li>Sports lowers</li><li>Casual lowers</li>
+              @foreach ($category->highlights as $highlight)<li>{{ $highlight }}</li>@endforeach
             </ul>
+            @endif
           </div>
-
-          <div class="lg:col-span-5 lg:mt-40" data-reveal>
-            <a href="{{ route('products.category', 'jackets') }}" class="category-tile">
-              <x-media :class="'category-tile__media'" :src="'images/placeholders/jackets/category-jackets.jpg'" :alt="'Black track jacket on a dark background'" :brief="'Black track jacket · dark backdrop · 4:5'" />
-              <div class="media-overlay z-[1]" aria-hidden="true"></div>
-              <div class="category-tile__content">
-                <span class="category-tile__index">02 / Collection</span>
-                <h3 class="category-tile__title">Jackets</h3>
-                <span class="link-arrow">View collection <i data-lucide="arrow-right"></i></span>
-              </div>
-            </a>
-            <ul class="subtype-list mt-6">
-              <li>Sports</li><li>Track</li><li>Winter</li><li>Fashion</li>
-            </ul>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>
@@ -153,21 +140,17 @@
           </div>
           <div class="filter-tabs" role="group" aria-label="Filter styles by category" data-reveal>
             <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">All</button>
-            <button type="button" class="filter-tab" data-filter="lowers" aria-pressed="false">Lowers</button>
-            <button type="button" class="filter-tab" data-filter="jackets" aria-pressed="false">Jackets</button>
+            @foreach ($featured->pluck('category')->unique('id')->sortBy('sort_order') as $category)
+            <button type="button" class="filter-tab" data-filter="{{ $category->slug }}" aria-pressed="false">{{ $category->name }}</button>
+            @endforeach
           </div>
         </div>
         <p class="sr-only" data-filter-status aria-live="polite"></p>
 
         <div class="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 md:gap-x-6 lg:grid-cols-4 lg:gap-y-16" data-reveal-group>
-          <x-product-card :name="'Classic Track Pant'" :category="'Lowers'" :type="'Track Pants'" :filter="'lowers'" :src="'images/placeholders/lowers/classic-track-pant.jpg'" :alt="'Black track pant with side panel'" :brief="'Black track pant · full length · studio · 4:5'" />
-          <x-product-card :name="'Tapered Jogger'" :category="'Lowers'" :type="'Joggers'" :filter="'lowers'" :src="'images/placeholders/lowers/tapered-jogger.jpg'" :alt="'Tapered jogger with ribbed cuffs'" :brief="'Tapered jogger · ribbed cuffs · studio · 4:5'" />
-          <x-product-card :name="'Zip Track Jacket'" :category="'Jackets'" :type="'Track Jacket'" :filter="'jackets'" :src="'images/placeholders/jackets/zip-track-jacket.jpg'" :alt="'Full-zip track jacket'" :brief="'Full-zip track jacket · studio · 4:5'" />
-          <x-product-card :name="'Quilted Winter Jacket'" :category="'Jackets'" :type="'Winter'" :filter="'jackets'" :src="'images/placeholders/jackets/quilted-winter-jacket.jpg'" :alt="'Quilted winter jacket'" :brief="'Quilted winter jacket · studio · 4:5'" />
-          <x-product-card :name="'Performance Sports Lower'" :category="'Lowers'" :type="'Sports'" :filter="'lowers'" :src="'images/placeholders/lowers/sports-lower.jpg'" :alt="'Lightweight sports lower'" :brief="'Sports lower · lightweight fabric · studio · 4:5'" />
-          <x-product-card :name="'Sports Windcheater'" :category="'Jackets'" :type="'Sports'" :filter="'jackets'" :src="'images/placeholders/jackets/windcheater.jpg'" :alt="'Lightweight sports windcheater jacket'" :brief="'Sports windcheater · studio · 4:5'" />
-          <x-product-card :name="'Casual Lounge Lower'" :category="'Lowers'" :type="'Casual'" :filter="'lowers'" :src="'images/placeholders/lowers/casual-lower.jpg'" :alt="'Relaxed casual lower'" :brief="'Casual lower · relaxed fit · studio · 4:5'" />
-          <x-product-card :name="'Bomber Jacket'" :category="'Jackets'" :type="'Fashion'" :filter="'jackets'" :src="'images/placeholders/jackets/bomber-jacket.jpg'" :alt="'Black bomber jacket'" :brief="'Black bomber jacket · studio · 4:5'" />
+          @foreach ($featured as $product)
+          <x-product-card :product="$product" :filter="$product->category->slug" />
+          @endforeach
         </div>
 
         <div class="mt-16 flex justify-center" data-reveal>
@@ -350,28 +333,17 @@
           </a>
         </div>
 
+        @if ($mosaic->isNotEmpty())
         <div class="mosaic mt-14" data-reveal-group>
-          <figure class="mosaic__item mosaic__item--a" data-reveal>
-            <x-media :src="'images/placeholders/manufacturing/stitching-line.jpg'" :alt="'Garments being stitched on industrial sewing machines'" :brief="'Stitching on industrial machines · wide'" />
-            <figcaption class="mosaic__caption">Stitching</figcaption>
+          @foreach ($mosaic as $item)
+          {{-- Slots a–e: the mosaic layout classes are fixed in sections.css. --}}
+          <figure class="mosaic__item mosaic__item--{{ ['a', 'b', 'c', 'd', 'e'][$loop->index] }}" data-reveal>
+            <x-media :src="$item->image" :alt="$item->image_alt" :brief="$item->caption" />
+            <figcaption class="mosaic__caption">{{ $item->short_caption ?: $item->caption }}</figcaption>
           </figure>
-          <figure class="mosaic__item mosaic__item--b" data-reveal>
-            <x-media :src="'images/placeholders/details/zip-detail.jpg'" :alt="'Close-up of a jacket zip and pull'" :brief="'Jacket zip detail · close-up'" />
-            <figcaption class="mosaic__caption">Zip &amp; trim detail</figcaption>
-          </figure>
-          <figure class="mosaic__item mosaic__item--c" data-reveal>
-            <x-media :src="'images/placeholders/details/waistband-detail.jpg'" :alt="'Close-up of an elasticated waistband with drawcord'" :brief="'Waistband & drawcord · close-up'" />
-            <figcaption class="mosaic__caption">Waistband detail</figcaption>
-          </figure>
-          <figure class="mosaic__item mosaic__item--d" data-reveal>
-            <x-media :src="'images/placeholders/manufacturing/finishing.jpg'" :alt="'Garment being pressed during finishing'" :brief="'Pressing & finishing'" />
-            <figcaption class="mosaic__caption">Finishing</figcaption>
-          </figure>
-          <figure class="mosaic__item mosaic__item--e" data-reveal>
-            <x-media :src="'images/placeholders/jackets/jacket-detail.jpg'" :alt="'Folded black jackets ready for packing'" :brief="'Folded jackets · ready for packing · wide'" />
-            <figcaption class="mosaic__caption">Ready for dispatch</figcaption>
-          </figure>
+          @endforeach
         </div>
+        @endif
       </div>
     </section>
 

@@ -1,7 +1,6 @@
-{{-- Converted from static-site/src/contact.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'Contact & Request a Quote'" :description="'Request a quote from Hudaya Enterprises for lowers, track pants and jackets manufacturing. Share your design, quantities and timeline.'" nav-active="contact" :hide-whatsapp="true">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="contact" :hide-whatsapp="true">
   <main id="main">
-    <x-page-hero :crumb="'Contact'" :eyebrow="'Contact & Quote'" :title="'Start a'" :title-em="'conversation.'" :lead="'Tell us about your product, quantities and timeline. We will reply with next steps, sampling options and a quote.'" :hero-size="'compact'" :src="'images/placeholders/hero/contact.jpg'" :alt="''" :brief="'Contact hero · neatly folded black garments on a table · soft light · 16:9'" />
+    <x-page-hero :crumb="'Contact'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :hero-size="'compact'" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Contact hero · neatly folded black garments on a table · soft light · 16:9'" />
 
     {{-- ============================================================ CONTACT + FORM --}}
     <section id="quote" class="surface-white section-y" aria-labelledby="quote-title">
@@ -33,53 +32,78 @@
           <h2 id="quote-title" class="t-h2 mt-8" data-reveal>Business <span class="t-em">inquiry.</span></h2>
           <p class="t-body mt-6" data-reveal>Fields marked * are required. The more detail you share, the more accurate our reply can be.</p>
 
-          <form class="mt-12" data-form="inquiry" data-email="{{ $site->email }}" data-whatsapp="{{ $site->whatsapp_number }}" action="#" method="post" novalidate data-reveal>
-            {{-- Phase 2: action → route('inquiries.store'), add @csrf --}}
+          @php
+              // Server-side validation state for a field: CSS class, aria and message.
+              $invalid = fn (string $field) => $errors->has($field) ? 'is-invalid' : '';
+              $selected = old('category', request('category'));
+              $chosen = (array) old('customisation', []);
+          @endphp
+
+          @if (session('inquiry_sent'))
+          {{-- Shown after the server has saved the inquiry. --}}
+          <div class="form-success mt-12" data-form-success tabindex="-1" role="status" data-reveal>
+            <span class="form-success__icon"><i data-lucide="check"></i></span>
+            <h3 class="t-h3">Thank you — your inquiry has been sent.</h3>
+            <p class="t-body">We have received your details and will reply by email or phone with next steps.</p>
+            <div class="flex flex-col gap-3 sm:flex-row">
+              @if ($site->whatsapp_url)
+              <a class="btn btn-dark" href="{{ $site->whatsapp_url }}" target="_blank" rel="noopener">
+                @include('icons.brand.whatsapp')
+                Continue on WhatsApp<span class="sr-only"> (opens in a new tab)</span>
+              </a>
+              @endif
+              <a class="btn btn-outline-dark" href="{{ route('products.index') }}">Browse products</a>
+            </div>
+            <a class="link-arrow justify-self-start" href="{{ route('contact') }}#quote">Send another inquiry <i data-lucide="arrow-right"></i></a>
+          </div>
+          @else
+          <form class="mt-12" data-form="inquiry" action="{{ route('inquiries.store') }}" method="post" novalidate data-reveal>
+            @csrf
+
+            @error('form')
+            <p class="placeholder-note mb-10" role="alert">{{ $message }}</p>
+            @enderror
 
             <fieldset class="form-fieldset">
               <legend class="form-legend">Your details</legend>
               <div class="form-grid">
-                <div class="field">
-                  <input class="field__input" id="f-name" name="name" type="text" placeholder=" " autocomplete="name" required maxlength="100" data-error="Please enter your name.">
+                <div class="field {{ $invalid('name') }}">
+                  <input class="field__input" id="f-name" name="name" type="text" placeholder=" " autocomplete="name" required maxlength="100" value="{{ old('name') }}" data-error="Please enter your name." @error('name') aria-invalid="true" aria-describedby="f-name-error" @enderror>
                   <label class="field__label" for="f-name">Full name *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-name-error">@error('name'){{ $message }}@enderror</p>
                 </div>
-                <div class="field">
-                  <input class="field__input" id="f-company" name="company" type="text" placeholder=" " autocomplete="organization" required maxlength="120" data-error="Please enter your company or brand name.">
+                <div class="field {{ $invalid('company') }}">
+                  <input class="field__input" id="f-company" name="company" type="text" placeholder=" " autocomplete="organization" required maxlength="120" value="{{ old('company') }}" data-error="Please enter your company or brand name." @error('company') aria-invalid="true" aria-describedby="f-company-error" @enderror>
                   <label class="field__label" for="f-company">Company / brand *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-company-error">@error('company'){{ $message }}@enderror</p>
                 </div>
-                <div class="field">
-                  <input class="field__input" id="f-email" name="email" type="email" placeholder=" " autocomplete="email" required maxlength="150" data-error="Please enter a valid email address, e.g. name@company.com.">
+                <div class="field {{ $invalid('email') }}">
+                  <input class="field__input" id="f-email" name="email" type="email" placeholder=" " autocomplete="email" required maxlength="150" value="{{ old('email') }}" data-error="Please enter a valid email address, e.g. name@company.com." @error('email') aria-invalid="true" aria-describedby="f-email-error" @enderror>
                   <label class="field__label" for="f-email">Email *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-email-error">@error('email'){{ $message }}@enderror</p>
                 </div>
-                <div class="field">
-                  <input class="field__input" id="f-phone" name="phone" type="tel" placeholder=" " autocomplete="tel" required pattern="[0-9\s\+\-\(\)]{7,20}" data-error="Please enter a valid phone or WhatsApp number.">
+                <div class="field {{ $invalid('phone') }}">
+                  <input class="field__input" id="f-phone" name="phone" type="tel" placeholder=" " autocomplete="tel" required pattern="[0-9\s\+\-\(\)]{7,20}" value="{{ old('phone') }}" data-error="Please enter a valid phone or WhatsApp number." @error('phone') aria-invalid="true" aria-describedby="f-phone-error" @enderror>
                   <label class="field__label" for="f-phone">Phone / WhatsApp *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-phone-error">@error('phone'){{ $message }}@enderror</p>
                 </div>
                 <div class="field">
-                  <input class="field__input" id="f-country" name="country" type="text" placeholder=" " autocomplete="country-name" maxlength="80">
+                  <input class="field__input" id="f-country" name="country" type="text" placeholder=" " autocomplete="country-name" maxlength="80" value="{{ old('country') }}">
                   <label class="field__label" for="f-country">Country</label>
                 </div>
                 <div class="field">
-                  <input class="field__input" id="f-city" name="city" type="text" placeholder=" " autocomplete="address-level2" maxlength="80">
+                  <input class="field__input" id="f-city" name="city" type="text" placeholder=" " autocomplete="address-level2" maxlength="80" value="{{ old('city') }}">
                   <label class="field__label" for="f-city">City</label>
                 </div>
-                <div class="field field--static field--full">
-                  <select class="field__input" id="f-buyer" name="buyer_type" required data-error="Please choose your business type.">
-                    <option value="" selected disabled>Select…</option>
-                    <option value="brand">Clothing brand</option>
-                    <option value="private-label">Private label brand</option>
-                    <option value="wholesaler">Wholesaler</option>
-                    <option value="retailer">Retailer</option>
-                    <option value="fashion-business">Fashion business</option>
-                    <option value="bulk-buyer">Bulk buyer</option>
-                    <option value="other">Other</option>
+                <div class="field field--static field--full {{ $invalid('buyer_type') }}">
+                  <select class="field__input" id="f-buyer" name="buyer_type" required data-error="Please choose your business type." @error('buyer_type') aria-invalid="true" aria-describedby="f-buyer-error" @enderror>
+                    <option value="" @selected(! old('buyer_type')) disabled>Select…</option>
+                    @foreach ($buyerTypes as $value => $label)
+                    <option value="{{ $value }}" @selected(old('buyer_type') === $value)>{{ $label }}</option>
+                    @endforeach
                   </select>
                   <label class="field__label" for="f-buyer">Business type *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-buyer-error">@error('buyer_type'){{ $message }}@enderror</p>
                 </div>
               </div>
             </fieldset>
@@ -87,33 +111,31 @@
             <fieldset class="form-fieldset mt-14">
               <legend class="form-legend">Your requirement</legend>
               <div class="form-grid">
-                <div class="field field--static">
-                  <select class="field__input" id="f-category" name="category" required data-error="Please choose a product category.">
-                    <option value="" selected disabled>Select…</option>
-                    <option value="lowers">Lowers &amp; track pants</option>
-                    <option value="jackets">Jackets</option>
-                    <option value="both">Both</option>
-                    <option value="custom">Custom / not sure yet</option>
+                <div class="field field--static {{ $invalid('category') }}">
+                  <select class="field__input" id="f-category" name="category" required data-error="Please choose a product category." @error('category') aria-invalid="true" aria-describedby="f-category-error" @enderror>
+                    <option value="" @selected(! $selected) disabled>Select…</option>
+                    @foreach ($inquiryCategories as $value => $label)
+                    <option value="{{ $value }}" @selected($selected === $value)>{{ $label }}</option>
+                    @endforeach
                   </select>
                   <label class="field__label" for="f-category">Product category *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-category-error">@error('category'){{ $message }}@enderror</p>
                 </div>
                 <div class="field">
-                  <input class="field__input" id="f-product" name="product" type="text" placeholder=" " maxlength="120">
+                  <input class="field__input" id="f-product" name="product" type="text" placeholder=" " maxlength="120" value="{{ old('product', request('product')) }}">
                   <label class="field__label" for="f-product">Product / style</label>
                 </div>
-                <div class="field">
-                  <input class="field__input" id="f-quantity" name="quantity" type="text" placeholder=" " required maxlength="60" data-error="Please give an estimated quantity, e.g. 500 pieces per style.">
+                <div class="field {{ $invalid('quantity') }}">
+                  <input class="field__input" id="f-quantity" name="quantity" type="text" placeholder=" " required maxlength="60" value="{{ old('quantity') }}" data-error="Please give an estimated quantity, e.g. 500 pieces per style." @error('quantity') aria-invalid="true" aria-describedby="f-quantity-error" @enderror>
                   <label class="field__label" for="f-quantity">Estimated quantity *</label>
-                  <p class="field__error"></p>
+                  <p class="field__error" id="f-quantity-error">@error('quantity'){{ $message }}@enderror</p>
                 </div>
                 <div class="field field--static">
                   <select class="field__input" id="f-timeline" name="timeline">
-                    <option value="" selected>Not sure yet</option>
-                    <option value="asap">As soon as possible</option>
-                    <option value="1-month">Within 1 month</option>
-                    <option value="1-3-months">1–3 months</option>
-                    <option value="3-plus-months">More than 3 months</option>
+                    <option value="" @selected(! old('timeline'))>Not sure yet</option>
+                    @foreach ($timelines as $value => $label)
+                    <option value="{{ $value }}" @selected(old('timeline') === $value)>{{ $label }}</option>
+                    @endforeach
                   </select>
                   <label class="field__label" for="f-timeline">Target timeline</label>
                 </div>
@@ -122,23 +144,20 @@
               <div class="mt-10">
                 <p class="form-legend" id="custom-label">Customisation needed</p>
                 <div class="check-grid" role="group" aria-labelledby="custom-label">
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Private label / branding"> Private label / branding</label>
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Custom fabric"> Custom fabric</label>
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Custom colours"> Custom colours</label>
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Custom sizing / fit"> Custom sizing / fit</label>
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Custom trims"> Custom trims</label>
-                  <label class="check"><input type="checkbox" name="customisation[]" value="Packing requirements"> Packing requirements</label>
+                  @foreach ($customisationOptions as $option)
+                  <label class="check"><input type="checkbox" name="customisation[]" value="{{ $option }}" @checked(in_array($option, $chosen, true))> {{ $option }}</label>
+                  @endforeach
                 </div>
               </div>
 
-              <div class="field mt-10">
-                <textarea class="field__input" id="f-message" name="message" placeholder=" " rows="5" required minlength="20" maxlength="2000" data-error="Please describe your requirement (at least 20 characters)."></textarea>
+              <div class="field mt-10 {{ $invalid('message') }}">
+                <textarea class="field__input" id="f-message" name="message" placeholder=" " rows="5" required minlength="20" maxlength="2000" data-error="Please describe your requirement (at least 20 characters)." @error('message') aria-invalid="true" aria-describedby="f-message-error" @enderror>{{ old('message') }}</textarea>
                 <label class="field__label" for="f-message">Tell us about your requirement *</label>
                 <div class="flex justify-between gap-4">
                   <p class="field__hint">Style, fabric, sizes, colours, branding, references — anything that helps.</p>
                   <p class="field__hint shrink-0 tabular-nums" data-count-for="f-message" aria-hidden="true"></p>
                 </div>
-                <p class="field__error"></p>
+                <p class="field__error" id="f-message-error">@error('message'){{ $message }}@enderror</p>
               </div>
             </fieldset>
 
@@ -148,38 +167,20 @@
               <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
             </div>
 
-            <div class="field mt-10">
+            <div class="field mt-10 {{ $invalid('consent') }}">
               <label class="check">
-                <input type="checkbox" name="consent" required data-error="Please agree so we can reply to your inquiry.">
+                <input type="checkbox" name="consent" value="1" required @checked(old('consent')) data-error="Please agree so we can reply to your inquiry.">
                 I agree to {{ $site->name }} contacting me about this inquiry. *
               </label>
-              <p class="field__error"></p>
+              <p class="field__error">@error('consent'){{ $message }}@enderror</p>
             </div>
 
-            <button type="submit" class="btn btn-dark btn-lg mt-10">
+            <button type="submit" class="btn btn-dark btn-lg mt-10" data-submit>
               Send Inquiry
               <i data-lucide="arrow-right"></i>
             </button>
           </form>
-
-          {{-- Static phase: hand-off to email / WhatsApp. Phase 2 replaces this with a server-side thank-you. --}}
-          <div class="form-success mt-12" data-form-success hidden tabindex="-1" role="status">
-            <span class="form-success__icon"><i data-lucide="check"></i></span>
-            <h3 class="t-h3">Your inquiry is ready to send.</h3>
-            <p class="t-body">Choose how you would like to send it. Your details are added to the message automatically.</p>
-            <p class="placeholder-note" data-send-missing hidden>[The company email and WhatsApp number are not set yet — add them in src/site.config.json to enable sending.]</p>
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <a class="btn btn-dark" data-send-email>
-                <i data-lucide="mail"></i>
-                Send by Email
-              </a>
-              <a class="btn btn-outline-dark" data-send-whatsapp>
-                @include('icons.brand.whatsapp')
-                Send on WhatsApp
-              </a>
-            </div>
-            <button type="button" class="link-arrow justify-self-start" data-form-edit>Edit inquiry</button>
-          </div>
+          @endif
         </div>
       </div>
     </section>

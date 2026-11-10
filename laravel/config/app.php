@@ -55,6 +55,13 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     /*
+    | Proxies that terminate HTTPS in front of the app (Cloudflare, a load balancer,
+    | a reverse proxy). "*" = trust the connecting proxy; or a comma-separated IP list.
+    | Leave empty when PHP talks to visitors directly (most shared hosting).
+    */
+    'trusted_proxies' => env('TRUSTED_PROXIES'),
+
+    /*
     |--------------------------------------------------------------------------
     | Application Timezone
     |--------------------------------------------------------------------------

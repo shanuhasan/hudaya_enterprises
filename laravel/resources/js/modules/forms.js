@@ -1,44 +1,23 @@
 /**
- * Inquiry form — validation, pre-fill and (static phase) hand-off.
+ * Inquiry form — browser-side validation for the quote form on /contact.
  *
  * Markup:
- *   <form data-form="inquiry" data-email="…" data-whatsapp="…" novalidate>
+ *   <form data-form="inquiry" action="/contact" method="post" novalidate>
  *     <div class="field"><input required data-error="…"> <label> <p class="field__error"></p></div>
+ *     <button type="submit" data-submit>
  *   </form>
- *   <div data-form-success hidden> … [data-send-email] [data-send-whatsapp] [data-form-edit] </div>
  *
- * - Pre-fills product / category from the URL: contact.html?product=Tapered%20Jogger&category=lowers
- * - Validates on submit, then live on input; errors are announced and linked with aria-describedby.
- * - Phase 1 (static): a valid inquiry is turned into a ready-to-send email / WhatsApp message.
- *   Phase 2 (Laravel): the form POSTs to the server instead — markup stays the same.
+ * - Checks fields when the visitor leaves them, re-checks live once an error shows, checks all on submit.
+ * - A valid form is POSTed to Laravel (StoreInquiryRequest validates again on the server).
+ * - Server-side errors arrive in the markup (aria-invalid) and are focused on load.
+ * - Product / category pre-fill from ?product=…&category=… is done by the server.
  */
-const FIELD_LABELS = {
-  name: 'Name',
-  company: 'Company',
-  email: 'Email',
-  phone: 'Phone / WhatsApp',
-  country: 'Country',
-  city: 'City',
-  buyer_type: 'Business type',
-  category: 'Product category',
-  product: 'Product / style',
-  quantity: 'Estimated quantity',
-  timeline: 'Target timeline',
-  message: 'Requirements',
-};
-
-// Config values in [brackets] are unfilled placeholders — treat them as missing.
-const isSet = (value) => Boolean(value) && !value.trim().startsWith('[');
-
 export default function initForms() {
   document.querySelectorAll('form[data-form="inquiry"]').forEach(setupForm);
 }
 
 function setupForm(form) {
-  const success = document.querySelector('[data-form-success]');
   let submitted = false;
-
-  prefill(form);
 
   const fields = [...form.querySelectorAll('input, select, textarea')].filter((el) => el.name);
 
@@ -91,83 +70,28 @@ function setupForm(form) {
   });
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
     submitted = true;
 
     const invalid = fields.filter((el) => !validate(el));
     if (invalid.length) {
+      event.preventDefault();
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       invalid[0].focus({ preventScroll: true });
       invalid[0].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
       return;
     }
 
-    // Honeypot: bots fill hidden fields — silently ignore.
-    if (form.querySelector('[name="website"]')?.value) return;
-
-    showSuccess(form, success);
+    // Valid: let the browser POST it to Laravel. Block double submits while it is sending.
+    const button = form.querySelector('[data-submit]');
+    if (button) {
+      if (button.disabled) { event.preventDefault(); return; }
+      button.disabled = true;
+      button.setAttribute('aria-busy', 'true');
+    }
   });
 
-  success?.querySelector('[data-form-edit]')?.addEventListener('click', () => {
-    success.hidden = true;
-    form.hidden = false;
-    form.querySelector('input, select, textarea')?.focus();
-  });
-}
-
-function prefill(form) {
-  const params = new URLSearchParams(window.location.search);
-  const product = params.get('product');
-  const category = params.get('category');
-
-  if (product && form.elements.product) form.elements.product.value = product.slice(0, 120);
-  if (category && form.elements.category) {
-    const option = [...form.elements.category.options].find((o) => o.value === category);
-    if (option) form.elements.category.value = category;
-  }
-}
-
-function summarise(form) {
-  const data = new FormData(form);
-  const lines = ['New manufacturing inquiry', ''];
-
-  Object.entries(FIELD_LABELS).forEach(([key, label]) => {
-    const el = form.elements[key];
-    let value = data.get(key);
-    if (el?.tagName === 'SELECT' && value) value = el.options[el.selectedIndex].text;
-    if (value) lines.push(`${label}: ${value}`);
-  });
-
-  const custom = data.getAll('customisation[]');
-  if (custom.length) lines.push(`Customisation: ${custom.join(', ')}`);
-  return lines.join('\n');
-}
-
-function showSuccess(form, success) {
-  if (!success) return;
-  const body = summarise(form);
-  const email = form.dataset.email || '';
-  const whatsapp = (form.dataset.whatsapp || '').replace(/\D/g, '');
-
-  const emailLink = success.querySelector('[data-send-email]');
-  const waLink = success.querySelector('[data-send-whatsapp]');
-
-  if (emailLink) {
-    emailLink.hidden = !isSet(email);
-    emailLink.href = `mailto:${email}?subject=${encodeURIComponent('Manufacturing inquiry')}&body=${encodeURIComponent(body)}`;
-  }
-  if (waLink) {
-    waLink.hidden = !whatsapp;
-    waLink.href = `https://wa.me/${whatsapp}?text=${encodeURIComponent(body)}`;
-    waLink.target = '_blank';
-    waLink.rel = 'noopener';
-  }
-
-  const notice = success.querySelector('[data-send-missing]');
-  if (notice) notice.hidden = isSet(email) || Boolean(whatsapp);
-
-  form.hidden = true;
-  success.hidden = false;
-  success.focus();
-  success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Server-side errors are already in the markup: link them for screen readers and focus the first one.
+  const serverInvalid = fields.filter((el) => el.getAttribute('aria-invalid') === 'true');
+  serverInvalid.forEach((el) => touched.add(el));
+  serverInvalid[0]?.focus({ preventScroll: true });
 }

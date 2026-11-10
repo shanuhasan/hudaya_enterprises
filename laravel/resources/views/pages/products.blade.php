@@ -1,7 +1,6 @@
-{{-- Converted from static-site/src/products.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'Products'" :description="'Lowers, track pants and jackets manufactured to your design, fabric and branding requirements by Hudaya Enterprises.'" nav-active="products">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="products">
   <main id="main">
-    <x-page-hero :crumb="'Products'" :eyebrow="'Our products'" :title="'Two categories,'" :title-em="'made to order.'" :lead="'Lowers and jackets manufactured to your design, fabric and branding requirements.'" :src="'images/placeholders/hero/products.jpg'" :alt="''" :brief="'Products hero · black track pants and jacket flat-lay · dark backdrop · 16:9'" />
+    <x-page-hero :crumb="'Products'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Products hero · black track pants and jacket flat-lay · dark backdrop · 16:9'" />
 
     {{-- ============================================================ INTRO --}}
     <section class="surface-bone section-y" aria-labelledby="products-intro-title">
@@ -32,41 +31,27 @@
         </div>
 
         <div class="mt-16">
-          <article class="showcase">
-            <a href="{{ route('products.category', 'lowers') }}" class="showcase__media category-tile" data-reveal tabindex="-1" aria-hidden="true">
-              <x-media :class="'h-full category-tile__media'" :src="'images/placeholders/lowers/category-lowers.jpg'" :alt="'Black track pants photographed in a studio'" :brief="'Black track pants · studio · dark backdrop · 4:5'" />
+          @foreach ($categories as $category)
+          <article @class(['showcase', 'showcase--reverse' => $loop->even])>
+            <a href="{{ route('products.category', $category) }}" class="showcase__media category-tile" data-reveal tabindex="-1" aria-hidden="true">
+              <x-media class="h-full category-tile__media" :src="$category->card_image" :alt="$category->card_image_alt" :brief="$category->name" />
             </a>
             <div class="showcase__body" data-reveal>
-              <span class="showcase__index">01</span>
-              <h3 class="t-h2 mt-6">Lowers &amp; <span class="t-em">Track Pants</span></h3>
-              <p class="t-body mt-6">Track pants, joggers, sports and casual lowers for men and women — made in the fabric, fit and finish your brand needs.</p>
+              <span class="showcase__index">{{ sprintf('%02d', $loop->iteration) }}</span>
+              <h3 class="t-h2 mt-6">{{ $category->title }}@if ($category->title_em) <span class="t-em">{{ $category->title_em }}</span>@endif</h3>
+              @if ($category->summary)<p class="t-body mt-6">{{ $category->summary }}</p>@endif
+              @if ($category->types->isNotEmpty())
               <ul class="subtype-list mt-8">
-                <li>Men's</li><li>Women's</li><li>Joggers</li><li>Sports</li><li>Casual</li><li>Custom</li>
+                @foreach ($category->types as $type)<li>{{ $type->short_name }}</li>@endforeach
               </ul>
+              @endif
               <div class="mt-10 flex flex-wrap gap-3">
-                <a href="{{ route('products.category', 'lowers') }}" class="btn btn-primary">View Lowers <i data-lucide="arrow-right"></i></a>
-                <a href="{{ route('contact') }}?category=lowers#quote" class="btn btn-secondary">Request a Quote</a>
+                <a href="{{ route('products.category', $category) }}" class="btn btn-primary">View {{ $category->name }} <i data-lucide="arrow-right"></i></a>
+                <a href="{{ route('contact', ['category' => $category->slug]) }}#quote" class="btn btn-secondary">Request a Quote</a>
               </div>
             </div>
           </article>
-
-          <article class="showcase showcase--reverse">
-            <a href="{{ route('products.category', 'jackets') }}" class="showcase__media category-tile" data-reveal tabindex="-1" aria-hidden="true">
-              <x-media :class="'h-full category-tile__media'" :src="'images/placeholders/jackets/category-jackets.jpg'" :alt="'Black track jacket on a dark background'" :brief="'Black track jacket · dark backdrop · 4:5'" />
-            </a>
-            <div class="showcase__body" data-reveal>
-              <span class="showcase__index">02</span>
-              <h3 class="t-h2 mt-6">Jackets</h3>
-              <p class="t-body mt-6">Sports, track, winter and fashion jackets for men and women — developed from your design and produced to your specification.</p>
-              <ul class="subtype-list mt-8">
-                <li>Men's</li><li>Women's</li><li>Sports</li><li>Track</li><li>Winter</li><li>Custom</li>
-              </ul>
-              <div class="mt-10 flex flex-wrap gap-3">
-                <a href="{{ route('products.category', 'jackets') }}" class="btn btn-primary">View Jackets <i data-lucide="arrow-right"></i></a>
-                <a href="{{ route('contact') }}?category=jackets#quote" class="btn btn-secondary">Request a Quote</a>
-              </div>
-            </div>
-          </article>
+          @endforeach
         </div>
       </div>
     </section>
@@ -128,8 +113,9 @@
           <div class="collection-tools" data-reveal>
             <div class="filter-tabs" role="group" aria-label="Filter styles by category">
               <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">All</button>
-              <button type="button" class="filter-tab" data-filter="lowers" aria-pressed="false">Lowers</button>
-              <button type="button" class="filter-tab" data-filter="jackets" aria-pressed="false">Jackets</button>
+              @foreach ($categories as $category)
+              <button type="button" class="filter-tab" data-filter="{{ $category->slug }}" aria-pressed="false">{{ $category->name }}</button>
+              @endforeach
             </div>
             <x-collection-search :search-id="'products'" :search-label="'Search styles'" />
           </div>
@@ -138,10 +124,9 @@
         <x-collection-empty />
 
         <div class="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 md:gap-x-6 lg:grid-cols-4 lg:gap-y-16" data-reveal-group>
-          <x-product-card :name="'Classic Track Pant'" :category="'Lowers'" :type="'Track Pants'" :filter="'lowers'" :src="'images/placeholders/lowers/classic-track-pant.jpg'" :alt="'Black track pant with side panel'" :brief="'Black track pant · full length · studio · 4:5'" />
-          <x-product-card :name="'Tapered Jogger'" :category="'Lowers'" :type="'Joggers'" :filter="'lowers'" :src="'images/placeholders/lowers/tapered-jogger.jpg'" :alt="'Tapered jogger with ribbed cuffs'" :brief="'Tapered jogger · ribbed cuffs · studio · 4:5'" />
-          <x-product-card :name="'Zip Track Jacket'" :category="'Jackets'" :type="'Track Jacket'" :filter="'jackets'" :src="'images/placeholders/jackets/zip-track-jacket.jpg'" :alt="'Full-zip track jacket'" :brief="'Full-zip track jacket · studio · 4:5'" />
-          <x-product-card :name="'Quilted Winter Jacket'" :category="'Jackets'" :type="'Winter'" :filter="'jackets'" :src="'images/placeholders/jackets/quilted-winter-jacket.jpg'" :alt="'Quilted winter jacket'" :brief="'Quilted winter jacket · studio · 4:5'" />
+          @foreach ($featured as $product)
+          <x-product-card :product="$product" :filter="$product->category->slug" />
+          @endforeach
         </div>
       </div>
     </section>

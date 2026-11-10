@@ -1,7 +1,6 @@
-{{-- Converted from static-site/src/about.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'About Us'" :description="'Hudaya Enterprises is a garment manufacturer focused on lowers, track pants and jackets for clothing brands, retailers and private label businesses.'" nav-active="about">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="about">
   <main id="main">
-    <x-page-hero :crumb="'About'" :eyebrow="'About Hudaya Enterprises'" :title="'Craft, care and'" :title-em="'consistency.'" :lead="'A garment manufacturer focused on lowers and jackets, working with brands, retailers and bulk buyers.'" :src="'images/placeholders/hero/about.jpg'" :alt="''" :brief="'About hero · tailor hands working on a black garment · dark, editorial light · 16:9'" />
+    <x-page-hero :crumb="'About'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'About hero · tailor hands working on a black garment · dark, editorial light · 16:9'" />
 
     {{-- ============================================================ OUR STORY --}}
     <section class="surface-bone section-y" aria-labelledby="story-title">

@@ -1,7 +1,6 @@
-{{-- Converted from static-site/src/manufacturing.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'Manufacturing'" :description="'The complete garment production workflow at Hudaya Enterprises, from design review and sampling to cutting, stitching, finishing, inspection and dispatch.'" nav-active="manufacturing">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="manufacturing">
   <main id="main">
-    <x-page-hero :crumb="'Manufacturing'" :eyebrow="'Manufacturing'" :title="'From pattern'" :title-em="'to packed order.'" :lead="'Every stage of production is planned around one approved sample, so bulk orders match what you signed off.'" :src="'images/placeholders/hero/manufacturing.jpg'" :alt="''" :brief="'Manufacturing hero · sewing machine needle on dark fabric · close, dramatic light · 16:9'" />
+    <x-page-hero :crumb="'Manufacturing'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Manufacturing hero · sewing machine needle on dark fabric · close, dramatic light · 16:9'" />
 
     {{-- ============================================================ OVERVIEW --}}
     <section class="surface-bone section-y" aria-labelledby="overview-title">

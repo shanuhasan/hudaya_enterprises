@@ -5,6 +5,16 @@
 
     RewriteEngine On
 
+    # --- HTTPS (shared hosting) -------------------------------------------------
+    # Uncomment once the SSL certificate is active, to send every visitor to https://.
+    # (On a VPS this is done in the Nginx/Apache server block instead.)
+    # RewriteCond %{HTTPS} !=on
+    # RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # --- Never serve hidden files (.env, .git…) — except .well-known for SSL validation
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -22,4 +32,34 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+</IfModule>
+
+# --- Uploaded files are images only: never run scripts from storage/ -----------
+<IfModule mod_rewrite.c>
+    RewriteRule ^storage/.*\.(php|phtml|phar|pl|py|cgi|sh)$ - [F,L,NC]
+</IfModule>
+
+# --- Compression ------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Browser caching --------------------------------------------------------------
+# Vite build files have a content hash in their name, so they can be cached for a year.
+# Photos and fonts: 30 days. HTML is never cached here (Laravel controls it).
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+    # Vite names look like app-BKNgt9D8.css (FilesMatch sees the file name only, not the path).
+    <FilesMatch "-[A-Za-z0-9_-]{8}\.(css|js|woff2?)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(jpe?g|png|webp)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
 </IfModule>

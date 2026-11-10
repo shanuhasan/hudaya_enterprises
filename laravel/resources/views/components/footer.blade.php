@@ -21,8 +21,9 @@
       <nav class="lg:col-span-2 lg:col-start-6" aria-label="Product categories">
         <h3 class="footer-heading">Products</h3>
         <ul class="footer-links">
-          <li><a href="{{ route('products.category', 'lowers') }}">Lowers &amp; Track Pants</a></li>
-          <li><a href="{{ route('products.category', 'jackets') }}">Jackets</a></li>
+          @foreach ($footerCategories as $category)
+          <li><a href="{{ route('products.category', $category) }}">{{ trim($category->title.' '.$category->title_em) }}</a></li>
+          @endforeach
           <li><a href="{{ route('products.index') }}">All Products</a></li>
           <li><a href="{{ route('contact') }}#quote">Private Label Inquiry</a></li>
         </ul>

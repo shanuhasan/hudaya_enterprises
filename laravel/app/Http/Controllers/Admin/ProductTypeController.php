@@ -65,13 +65,13 @@ class ProductTypeController extends Controller
             'short_name' => ['required', 'string', 'max:40'],
             'slug' => ['required', 'alpha_dash', 'max:40', Rule::unique('product_types', 'slug')->where('category_id', $category->id)->ignore($type)],
             'description' => ['nullable', 'string', 'max:300'],
-            'image_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'],
+            'image_file' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'],
             'image_alt' => ['nullable', 'string', 'max:255'],
             'sort_order' => ['required', 'integer', 'min:0', 'max:999'],
             'is_active' => ['boolean'],
         ], [
             'slug.unique' => 'This category already has a type with this filter key.',
-            'image_file.dimensions' => 'Images must be at least 400 × 400 pixels.',
+            'image_file.dimensions' => 'Images must be between 400 and 6000 pixels on each side.',
         ], ['short_name' => 'filter tab label', 'slug' => 'filter key', 'image_file' => 'image']);
     }
 

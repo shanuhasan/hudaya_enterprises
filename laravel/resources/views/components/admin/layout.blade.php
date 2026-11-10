@@ -35,7 +35,7 @@
         <span>Admin panel</span>
       </div>
 
-      <nav class="adm-nav">
+      <nav class="adm-nav" aria-label="Admin menu">
         <p class="adm-nav__label">Manage</p>
         @foreach ($nav as [$route, $patterns, $icon, $label, $count])
           <a class="adm-nav__link" href="{{ route($route) }}" @if ($isActive($patterns)) aria-current="page" @endif>

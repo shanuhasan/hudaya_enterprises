@@ -11,7 +11,7 @@
       <section class="adm-card adm-card__body xl:col-span-2">
         <h2 class="adm-section-title">Image</h2>
         <div class="adm-form-grid">
-          <x-admin.image-input name="image_file" label="Photo" :current="$item->image" :required="! $editing" help="JPG, PNG or WebP, at least 400 × 400 px, up to 5 MB." />
+          <x-admin.image-input name="image_file" label="Photo" :current="$item->image" :required="! $editing" help="JPG, PNG or WebP, 400–6000 px per side, up to 5 MB." />
           <x-admin.input name="caption" label="Caption" :value="$item->caption" required maxlength="255" help="Describe the subject (e.g. “Fabric cutting”). Never claim stock photos as your own facility." />
           <x-admin.input name="image_alt" label="Image description" :value="$item->image_alt" required maxlength="255" help="What the photo shows, for screen readers." />
           <div class="adm-form-grid adm-form-grid--2">

@@ -16,6 +16,7 @@
         <label class="sr-only" for="gallery-q">Search captions</label>
         <i data-lucide="search"></i>
         <input class="adm-input" id="gallery-q" type="search" name="q" value="{{ request('q') }}" placeholder="Search captions">
+        <button type="submit" class="sr-only">Search</button>
       </form>
     </div>
 

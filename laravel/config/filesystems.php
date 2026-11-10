@@ -40,7 +40,10 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // Admin uploads. Normally storage/app/public, reached through the public/storage
+            // symlink (php artisan storage:link). On hosting that does not allow symlinks, set
+            // PUBLIC_STORAGE_ROOT to the absolute path of <web root>/storage instead.
+            'root' => env('PUBLIC_STORAGE_ROOT', storage_path('app/public')),
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,

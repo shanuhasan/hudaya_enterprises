@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
-    private const IMAGE = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'];
+    private const IMAGE = ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'];
 
     public function authorize(): bool
     {
@@ -93,6 +93,6 @@ class CategoryRequest extends FormRequest
 
     public function messages(): array
     {
-        return ['*.dimensions' => 'Images must be at least 400 × 400 pixels.'];
+        return ['*.dimensions' => 'Images must be between 400 and 6000 pixels on each side.'];
     }
 }

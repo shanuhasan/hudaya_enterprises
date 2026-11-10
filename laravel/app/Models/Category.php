@@ -36,6 +36,19 @@ class Category extends Model
         return $this->hasMany(Product::class)->orderBy('sort_order');
     }
 
+    /**
+     * The public route binds {category:slug} and must only find active categories (inactive → 404).
+     * The admin binds by id and sees every category.
+     */
+    public function resolveRouteBinding($value, $field = null): ?self
+    {
+        if ($field === 'slug') {
+            return $this->newQuery()->active()->where('slug', $value)->firstOrFail();
+        }
+
+        return parent::resolveRouteBinding($value, $field);
+    }
+
     /** Position label used on tiles and showcases: "01", "02"… */
     public function indexLabel(): string
     {

@@ -14,7 +14,7 @@ use Illuminate\View\View;
 /** Additional photos per product: upload, describe, reorder, promote to featured, delete. */
 class ProductImageController extends Controller
 {
-    private const IMAGE_RULE = ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'];
+    private const IMAGE_RULE = ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'];
 
     public function __construct(private readonly ImageService $images) {}
 
@@ -40,7 +40,7 @@ class ProductImageController extends Controller
     {
         $request->validate(
             ['images' => ['required', 'array', 'min:1', 'max:12'], 'images.*' => self::IMAGE_RULE],
-            ['images.required' => 'Choose at least one image to upload.', 'images.*.dimensions' => 'Images must be at least 400 × 400 pixels.'],
+            ['images.required' => 'Choose at least one image to upload.', 'images.*.dimensions' => 'Images must be between 400 and 6000 pixels on each side.'],
             ['images.*' => 'image'],
         );
 

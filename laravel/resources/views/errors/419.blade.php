@@ -1,0 +1,1 @@
+@include('errors.standalone', ['code' => 419, 'title' => 'Page expired.', 'text' => 'The page was open for a long time, so the form could not be sent safely. Please go back, refresh the page and try again.', 'href' => url()->previous(), 'cta' => 'Go back'])

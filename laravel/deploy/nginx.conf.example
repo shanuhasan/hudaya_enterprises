@@ -1,0 +1,75 @@
+# Nginx server block for Hudaya Enterprises (VPS) — see docs/DEPLOYMENT.md, section B.
+# Replace example.com and the PHP-FPM socket path (php8.3-fpm / php8.2-fpm) with yours.
+# Certbot adds the "listen 443 ssl" lines and certificate paths automatically (§B7).
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name example.com www.example.com;
+
+    root /var/www/hudaya/laravel/public;
+    index index.php;
+    charset utf-8;
+
+    # Uploads: 12 photos × 5 MB at once from the admin, plus form overhead.
+    client_max_body_size 64M;
+
+    # www → bare domain (remove if you prefer www as the main address)
+    if ($host = www.example.com) {
+        return 301 $scheme://example.com$request_uri;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location = /favicon.png { access_log off; log_not_found off; }
+
+    # Never serve hidden files (.env, .git…), except Let's Encrypt validation.
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+
+    # Uploaded files are images only — never execute scripts from storage/.
+    location ~* ^/storage/.*\.(php|phtml|phar|pl|py|cgi|sh)$ {
+        deny all;
+    }
+
+    # Vite build files have a content hash in their name: cache for a year.
+    location /build/ {
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        access_log off;
+        try_files $uri =404;
+    }
+
+    location ~* \.(?:jpe?g|png|webp|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000";
+        access_log off;
+        try_files $uri =404;
+    }
+
+    location ~ ^/index\.php(/|$) {
+        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+        fastcgi_hide_header X-Powered-By;
+        fastcgi_read_timeout 60s;
+        internal;
+    }
+
+    # Any other .php file → 404 (only index.php may run).
+    location ~ \.php$ {
+        return 404;
+    }
+
+    gzip on;
+    gzip_comp_level 5;
+    gzip_types text/plain text/css text/xml application/xml application/javascript application/json image/svg+xml;
+
+    server_tokens off;
+    error_page 404 /index.php;
+}

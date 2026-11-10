@@ -84,7 +84,7 @@
         <section class="adm-card adm-card__body">
           <h2 class="adm-section-title">Featured image</h2>
           <div class="adm-form-grid">
-            <x-admin.image-input name="image" label="Image" :current="$product->image" help="Shown on the product card. JPG, PNG or WebP, at least 400 × 400 px, up to 5 MB." />
+            <x-admin.image-input name="image" label="Image" :current="$product->image" help="Shown on the product card. JPG, PNG or WebP, 400–6000 px per side, up to 5 MB." />
             <x-admin.input name="image_alt" label="Image description" :value="$product->image_alt" maxlength="255" help="Describe what the photo shows, for screen readers." />
           </div>
         </section>

@@ -75,9 +75,9 @@
                 @foreach ($specs as $i => $row)
                   <div class="grid gap-2 md:grid-cols-[12rem_1fr]">
                     <label class="sr-only" for="spec-{{ $i }}-label">Detail {{ $i + 1 }} name</label>
-                    <input class="adm-input" id="spec-{{ $i }}-label" name="specs[{{ $i }}][label]" value="{{ $row['label'] ?? '' }}" placeholder="e.g. Fabric" maxlength="60">
+                    <input class="adm-input" type="text" id="spec-{{ $i }}-label" name="specs[{{ $i }}][label]" value="{{ $row['label'] ?? '' }}" placeholder="e.g. Fabric" maxlength="60">
                     <label class="sr-only" for="spec-{{ $i }}-value">Detail {{ $i + 1 }} value</label>
-                    <input class="adm-input" id="spec-{{ $i }}-value" name="specs[{{ $i }}][value]" value="{{ $row['value'] ?? '' }}" placeholder="e.g. Type, composition and weight" maxlength="160">
+                    <input class="adm-input" type="text" id="spec-{{ $i }}-value" name="specs[{{ $i }}][value]" value="{{ $row['value'] ?? '' }}" placeholder="e.g. Type, composition and weight" maxlength="160">
                   </div>
                 @endforeach
               </div>

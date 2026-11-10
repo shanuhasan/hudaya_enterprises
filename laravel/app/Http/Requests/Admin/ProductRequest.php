@@ -42,10 +42,10 @@ class ProductRequest extends FormRequest
             'sizes' => ['array', 'max:20'],
             'sizes.*' => ['string', 'max:20'],
             'moq' => ['nullable', 'string', 'max:80'],
-            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'],
+            'image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'],
             'image_alt' => ['nullable', 'string', 'max:255'],
             'gallery' => ['nullable', 'array', 'max:12'],
-            'gallery.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'],
+            'gallery.*' => ['image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'],
             'is_featured' => ['boolean'],
             'featured_position' => ['nullable', 'integer', 'min:1', 'max:999'],
             'is_active' => ['boolean'],
@@ -83,8 +83,8 @@ class ProductRequest extends FormRequest
         return [
             'slug.unique' => 'Another product already uses this URL slug.',
             'types.*.exists' => 'Choose types that belong to the selected category.',
-            '*.dimensions' => 'Images must be at least 400 × 400 pixels.',
-            'gallery.*.dimensions' => 'Gallery images must be at least 400 × 400 pixels.',
+            '*.dimensions' => 'Images must be between 400 and 6000 pixels on each side.',
+            'gallery.*.dimensions' => 'Gallery images must be between 400 and 6000 pixels on each side.',
         ];
     }
 }

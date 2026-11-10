@@ -1,7 +1,6 @@
-{{-- Converted from static-site/src/quality.html (Module 1). Data becomes dynamic in later modules. --}}
-<x-layouts.app :title="'Quality Assurance'" :description="'How Hudaya Enterprises inspects and finishes garments: fabric checks, inline inspection, measurements, finishing and final inspection before packing.'" nav-active="quality">
+<x-layouts.app :title="$page->meta_title" :description="$page->meta_description" nav-active="quality">
   <main id="main">
-    <x-page-hero :crumb="'Quality'" :eyebrow="'Quality Assurance'" :title="'Checked at'" :title-em="'every stage.'" :lead="'Inspection and finishing are built into production, so what you approve is what you receive.'" :src="'images/placeholders/hero/quality.jpg'" :alt="''" :brief="'Quality hero · measuring tape on a black garment · close-up · 16:9'" />
+    <x-page-hero :crumb="'Quality'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Quality hero · measuring tape on a black garment · close-up · 16:9'" />
 
     {{-- ============================================================ PHILOSOPHY --}}
     <section class="surface-bone section-y" aria-labelledby="philosophy-title">

@@ -20,7 +20,7 @@
         <div class="adm-field @error('images') has-error @enderror @error('images.*') has-error @enderror">
           <label class="adm-label" for="f-images">Choose images</label>
           <input class="adm-file" id="f-images" name="images[]" type="file" accept="image/jpeg,image/png,image/webp" multiple required>
-          <p class="adm-help">Up to 12 at once · JPG, PNG or WebP · min. 400 × 400 px · max. 5 MB each.</p>
+          <p class="adm-help">Up to 12 at once · JPG, PNG or WebP · 400–6000 px per side · max. 5 MB each.</p>
           @error('images')<p class="adm-error">{{ $message }}</p>@enderror
           @error('images.*')<p class="adm-error">{{ $message }}</p>@enderror
         </div>

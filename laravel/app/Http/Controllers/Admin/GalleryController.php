@@ -77,7 +77,7 @@ class GalleryController extends Controller
             'caption' => ['required', 'string', 'max:255'],
             'short_caption' => ['nullable', 'string', 'max:60'],
             'group' => ['required', Rule::enum(GalleryGroup::class)],
-            'image_file' => [$item->exists ? 'nullable' : 'required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=8000,max_height=8000'],
+            'image_file' => [$item->exists ? 'nullable' : 'required', 'image', 'mimes:jpg,jpeg,png,webp', 'max:5120', 'dimensions:min_width=400,min_height=400,max_width=6000,max_height=6000'],
             'image_alt' => ['required', 'string', 'max:255'],
             'aspect' => ['required', Rule::in(GalleryItem::ASPECTS)],
             'home_position' => ['nullable', 'integer', 'between:1,5', Rule::unique('gallery_items', 'home_position')->ignore($item)],
@@ -85,7 +85,7 @@ class GalleryController extends Controller
             'is_active' => ['boolean'],
         ], [
             'image_file.required' => 'Choose an image to upload.',
-            'image_file.dimensions' => 'Images must be at least 400 × 400 pixels.',
+            'image_file.dimensions' => 'Images must be between 400 and 6000 pixels on each side.',
             'home_position.unique' => 'Another image already uses this Home mosaic slot.',
         ], ['image_file' => 'image', 'image_alt' => 'image description', 'home_position' => 'Home mosaic slot']);
 
