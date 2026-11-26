@@ -13,7 +13,8 @@
 
 return [
     'name' => 'Hudaya Enterprises',
-    'logo' => '',
+    'logo' => '',           // logo for light backgrounds (empty = supplied artwork)
+    'logo_on_dark' => '',   // logo for dark backgrounds (empty = supplied artwork)
     'tagline' => 'Crafted with precision. Built for excellence.',
     'tagline_alt' => 'Your vision. Our craftsmanship.',
     'announcement' => 'Lowers, track pants & jackets — manufactured for brands, retailers and bulk buyers',

@@ -10,7 +10,7 @@
                  :lead="$category->hero_lead" :src="$category->hero_image" alt="" :brief="$category->name.' hero image'" />
 
     {{-- ============================================================ INTRO --}}
-    <section class="surface-bone section-y" aria-labelledby="{{ $slug }}-intro-title">
+    <section class="surface-mist section-y" aria-labelledby="{{ $slug }}-intro-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-6">
         @if ($category->intro_image_position === 'left')
         <div class="lg:col-span-5" data-reveal>
@@ -33,7 +33,7 @@
 
     @if ($category->types->isNotEmpty())
     {{-- ============================================================ TYPES --}}
-    <section class="surface-ink section-y" aria-labelledby="{{ $slug }}-types-title">
+    <section class="surface-charcoal section-y" aria-labelledby="{{ $slug }}-types-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -54,7 +54,7 @@
     @endif
 
     {{-- ============================================================ STYLES (filterable) --}}
-    <section id="styles" class="surface-ink-2 section-y" aria-labelledby="{{ $slug }}-styles-title" data-collection-filter>
+    <section id="styles" class="surface-tint section-y" aria-labelledby="{{ $slug }}-styles-title" data-collection-filter>
       <div class="container-site">
         <div class="flex flex-col gap-10">
           <div class="section-head" data-reveal>
@@ -89,7 +89,7 @@
 
     @if ($category->specs)
     {{-- ============================================================ DETAILS --}}
-    <section class="surface-bone section-y" aria-labelledby="{{ $slug }}-details-title">
+    <section class="surface-mist section-y" aria-labelledby="{{ $slug }}-details-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-5">
           <div class="section-head" data-reveal>

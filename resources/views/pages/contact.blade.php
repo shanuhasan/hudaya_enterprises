@@ -7,7 +7,7 @@
       <div class="container-site grid gap-16 lg:grid-cols-12 lg:gap-6">
 
         {{-- Contact details --}}
-        <aside class="lg:col-span-4" aria-labelledby="details-title">
+        <div class="lg:col-span-4">
           <div class="lg:sticky lg:top-32">
             <p class="eyebrow" data-reveal>01 / Get in touch</p>
             <h2 id="details-title" class="t-h2 mt-8" data-reveal>Talk to <span class="t-em">us directly.</span></h2>
@@ -24,7 +24,7 @@
             </a>
             @endif
           </div>
-        </aside>
+        </div>
 
         {{-- Inquiry form --}}
         <div class="lg:col-span-7 lg:col-start-6">
@@ -186,7 +186,7 @@
     </section>
 
     {{-- ============================================================ WHAT HAPPENS NEXT --}}
-    <section class="surface-ink section-y" aria-labelledby="next-title">
+    <section class="surface-charcoal section-y" aria-labelledby="next-title">
       <div class="container-site">
         <div class="section-head" data-reveal>
           <p class="eyebrow">03 / What happens next</p>
@@ -213,7 +213,7 @@
     </section>
 
     {{-- ============================================================ LOCATION --}}
-    <section class="surface-ink-2 section-y-compact" aria-labelledby="location-title">
+    <section class="surface-tint section-y-compact" aria-labelledby="location-title">
       <div class="container-site grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-6">
         <div class="lg:col-span-4" data-reveal>
           <p class="eyebrow">04 / Location</p>

@@ -3,7 +3,7 @@
     <x-page-hero :crumb="'Manufacturing'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Manufacturing hero · sewing machine needle on dark fabric · close, dramatic light · 16:9'" />
 
     {{-- ============================================================ OVERVIEW --}}
-    <section class="surface-bone section-y" aria-labelledby="overview-title">
+    <section class="surface-mist section-y" aria-labelledby="overview-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -32,7 +32,7 @@
     </section>
 
     {{-- ============================================================ WORKFLOW --}}
-    <section class="surface-ink section-y" aria-labelledby="workflow-title">
+    <section class="surface-white section-y" aria-labelledby="workflow-title">
       <div class="container-site">
         <div class="section-head" data-reveal>
           <p class="eyebrow">02 / Production workflow</p>
@@ -55,7 +55,7 @@
 
     {{-- ============================================================ PRODUCTION DETAILS --}}
     {{-- Values in [brackets] are placeholders for the client to confirm. Never publish invented figures. --}}
-    <section class="surface-ink-2 section-y" aria-labelledby="details-title">
+    <section class="surface-charcoal section-y" aria-labelledby="details-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-5">
           <div class="section-head" data-reveal>

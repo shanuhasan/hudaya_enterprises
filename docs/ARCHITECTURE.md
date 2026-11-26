@@ -129,6 +129,12 @@ resources/views/admin/**
 
 ## 5. Design system
 
+> **Superseded (26 Nov 2026):** the site now uses a light theme in the logo colours —
+> green `#4AA059` / deep green `#2B7339`, blue `#2773A0`, charcoal `#393E42` / `#1E2326`,
+> white and light green-grey surfaces. The live tokens and their contrast notes are in
+> `resources/css/tokens.css` and `resources/css/layout.css` (surfaces). The palette below is
+> the original Phase 1 black/champagne design, kept for history.
+
 ### 5.1 Colour tokens (exact palette)
 ```css
 @theme {

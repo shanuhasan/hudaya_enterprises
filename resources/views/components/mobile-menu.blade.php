@@ -6,7 +6,7 @@
 <div id="mobile-menu" class="mobile-menu" data-menu hidden role="dialog" aria-modal="true" aria-label="Site menu">
   <div class="mobile-menu__scrim" data-menu-close aria-hidden="true"></div>
 
-  <div class="mobile-menu__panel surface-ink" data-menu-panel>
+  <div class="mobile-menu__panel surface-white" data-menu-panel>
     <div class="mobile-menu__pad mobile-menu__top">
       <x-logo />
       <button type="button" class="menu-toggle" data-menu-close>

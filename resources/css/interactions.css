@@ -85,7 +85,7 @@
     .search-field { width: 18rem; flex-shrink: 0; }
   }
   .search-field:focus-within {
-    border-bottom-color: var(--color-champagne);
+    border-bottom-color: var(--accent);
     color: var(--fg-strong);
   }
   .search-field .lucide { width: 1rem; height: 1rem; flex-shrink: 0; }

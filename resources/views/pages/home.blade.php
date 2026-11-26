@@ -2,7 +2,7 @@
   <main id="main">
 
     {{-- ============================================================ 3. HERO --}}
-    <section class="hero surface-ink" aria-labelledby="hero-title">
+    <section class="hero surface-dark" aria-labelledby="hero-title">
       <div class="hero__media" aria-hidden="true">
         <x-media :src="$page->hero_image" :alt="$page->hero_image_alt" brief="Home hero image" img-class="hero-settle" loading="eager" priority="high" />
       </div>
@@ -46,7 +46,7 @@
     </section>
 
     {{-- ============================================================ 4. COMPANY INTRODUCTION --}}
-    <section id="about" class="surface-bone section-y" aria-labelledby="intro-title">
+    <section id="about" class="surface-mist section-y" aria-labelledby="intro-title">
       <div class="container-site">
         <div class="grid gap-16 lg:grid-cols-12 lg:gap-6">
           <div class="lg:col-span-6">
@@ -93,7 +93,7 @@
     </section>
 
     {{-- ============================================================ 5. CATEGORY SHOWCASE --}}
-    <section class="surface-ink section-y" aria-labelledby="collections-title">
+    <section class="surface-white section-y" aria-labelledby="collections-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -130,7 +130,7 @@
     </section>
 
     {{-- ============================================================ 6. FEATURED PRODUCTS --}}
-    <section class="surface-ink-2 section-y" aria-labelledby="featured-title" data-collection-filter>
+    <section class="surface-tint section-y" aria-labelledby="featured-title" data-collection-filter>
       <div class="container-site">
         <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div class="section-head" data-reveal>
@@ -164,7 +164,7 @@
 
     {{-- ============================================================ 7. CAPABILITIES --}}
     {{-- Confirm this list with the client before launch — no service is listed that is not offered. --}}
-    <section class="surface-bone section-y" aria-labelledby="capabilities-title">
+    <section class="surface-mist section-y" aria-labelledby="capabilities-title">
       <div class="container-site grid gap-16 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-5">
           <div class="lg:sticky lg:top-32">
@@ -216,7 +216,7 @@
     </section>
 
     {{-- ============================================================ 8. PROCESS --}}
-    <section class="surface-ink section-y" aria-labelledby="process-title">
+    <section class="surface-white section-y" aria-labelledby="process-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-7" data-reveal>
@@ -239,7 +239,7 @@
     </section>
 
     {{-- ============================================================ 9. QUALITY --}}
-    <section class="surface-ink-2 section-y" aria-labelledby="quality-title">
+    <section class="surface-charcoal section-y" aria-labelledby="quality-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-6">
         <div class="lg:col-span-6" data-reveal>
           <x-media :class="'aspect-[4/5]'" :src="'images/placeholders/quality/inspection.jpg'" :alt="'Garment being measured during quality inspection'" :brief="'Quality inspection · garment measurement · 4:5'" />
@@ -272,7 +272,7 @@
     </section>
 
     {{-- ============================================================ 10. WHY CHOOSE --}}
-    <section class="surface-bone section-y" aria-labelledby="why-title">
+    <section class="surface-mist section-y" aria-labelledby="why-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -320,7 +320,7 @@
     </section>
 
     {{-- ============================================================ 11. GALLERY PREVIEW --}}
-    <section class="surface-ink section-y" aria-labelledby="gallery-title">
+    <section class="surface-white section-y" aria-labelledby="gallery-title">
       <div class="container-site">
         <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div class="section-head" data-reveal>

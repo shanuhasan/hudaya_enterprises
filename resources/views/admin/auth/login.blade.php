@@ -11,7 +11,7 @@
 <body>
   <div class="adm-login">
     <aside class="adm-login__brand" aria-label="{{ $site->name }}">
-      <img src="{{ asset($site->logo ?: 'images/brand/logo-lockup-light.png') }}" alt="{{ $site->name }}" class="h-11 w-auto self-start">
+      <img src="{{ asset($site->logo_on_dark ?: 'images/brand/logo-lockup-light.png') }}" alt="{{ $site->name }}" class="h-11 w-auto self-start">
       <div>
         <p class="adm-eyebrow">Admin panel</p>
         <p class="mt-4 max-w-md font-serif text-5xl leading-tight">{{ $site->tagline }}</p>

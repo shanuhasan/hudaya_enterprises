@@ -3,7 +3,7 @@
     <x-page-hero :crumb="'Quality'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Quality hero · measuring tape on a black garment · close-up · 16:9'" />
 
     {{-- ============================================================ PHILOSOPHY --}}
-    <section class="surface-bone section-y" aria-labelledby="philosophy-title">
+    <section class="surface-mist section-y" aria-labelledby="philosophy-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-7" data-reveal>
           <p class="eyebrow">01 / Our approach</p>
@@ -18,7 +18,7 @@
     </section>
 
     {{-- ============================================================ CHECKPOINTS --}}
-    <section class="surface-ink section-y" aria-labelledby="checkpoints-title">
+    <section class="surface-charcoal section-y" aria-labelledby="checkpoints-title">
       <div class="container-site grid gap-16 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-5">
           <div class="lg:sticky lg:top-32">
@@ -71,7 +71,7 @@
     </section>
 
     {{-- ============================================================ WHAT WE CHECK --}}
-    <section class="surface-bone section-y" aria-labelledby="check-title">
+    <section class="surface-mist section-y" aria-labelledby="check-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-4">
           <div class="section-head" data-reveal>
@@ -99,7 +99,7 @@
     </section>
 
     {{-- ============================================================ FINISHING --}}
-    <section class="surface-ink-2 section-y" aria-labelledby="finishing-title">
+    <section class="surface-tint section-y" aria-labelledby="finishing-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -120,7 +120,7 @@
 
     {{-- ============================================================ CERTIFICATIONS (only when supplied) --}}
     @if ($site->certifications)
-    <section class="surface-bone section-y-compact" aria-labelledby="cert-title">
+    <section class="surface-mist section-y-compact" aria-labelledby="cert-title">
       <div class="container-site grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-4">
           <p class="eyebrow">05 / Certifications</p>

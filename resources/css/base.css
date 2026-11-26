@@ -11,7 +11,7 @@
 
   body {
     min-height: 100vh;
-    background-color: var(--color-ink);
+    background-color: var(--color-white);
     color: var(--fg);
     font-family: var(--font-sans);
     font-size: var(--text-body);
@@ -43,13 +43,13 @@
   button { cursor: pointer; }
 
   ::selection {
-    background-color: var(--color-champagne);
-    color: var(--color-ink);
+    background-color: var(--accent);
+    color: var(--fg-inverse);
   }
 
   /* One consistent, visible focus ring everywhere. */
   :focus-visible {
-    outline: 2px solid var(--color-champagne);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
 

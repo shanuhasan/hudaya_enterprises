@@ -66,12 +66,20 @@
         <section class="adm-card adm-card__body">
           <h2 class="adm-section-title">Logo</h2>
           <div class="adm-form-grid">
-            <x-admin.image-input name="logo_file" label="Logo" variant="logo" :current="$v('logo') ?: 'images/brand/logo-lockup-light.png'"
-                                 help="Light version for the black header: PNG or WebP with a transparent background, up to 2 MB." />
+            <x-admin.image-input name="logo_file" label="Logo for light backgrounds" variant="logo-light" :current="$v('logo') ?: 'images/brand/logo-lockup.png'"
+                                 help="Original colours — used in the white header and menu. PNG or WebP with a transparent background, up to 2 MB." />
             @if ($v('logo'))
-              <label class="adm-check"><input type="hidden" name="remove_logo" value="0"><input type="checkbox" name="remove_logo" value="1"> <span>Remove the uploaded logo and use the supplied Hudaya logo again</span></label>
+              <label class="adm-check"><input type="hidden" name="remove_logo" value="0"><input type="checkbox" name="remove_logo" value="1"> <span>Remove and use the supplied Hudaya logo again</span></label>
             @else
-              <p class="adm-help">Currently using the supplied Hudaya Enterprises logo.</p>
+              <p class="adm-help">Currently the supplied Hudaya Enterprises logo.</p>
+            @endif
+
+            <x-admin.image-input name="logo_on_dark_file" label="Logo for dark backgrounds" variant="logo" :current="$v('logo_on_dark') ?: 'images/brand/logo-lockup-light.png'"
+                                 help="White lettering — used over photos, in the footer and in this admin's sidebar. PNG or WebP, up to 2 MB." />
+            @if ($v('logo_on_dark'))
+              <label class="adm-check"><input type="hidden" name="remove_logo_on_dark" value="0"><input type="checkbox" name="remove_logo_on_dark" value="1"> <span>Remove and use the supplied Hudaya logo again</span></label>
+            @else
+              <p class="adm-help">Currently the supplied Hudaya Enterprises logo.</p>
             @endif
           </div>
         </section>

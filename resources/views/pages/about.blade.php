@@ -3,7 +3,7 @@
     <x-page-hero :crumb="'About'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'About hero · tailor hands working on a black garment · dark, editorial light · 16:9'" />
 
     {{-- ============================================================ OUR STORY --}}
-    <section class="surface-bone section-y" aria-labelledby="story-title">
+    <section class="surface-mist section-y" aria-labelledby="story-title">
       <div class="container-site grid gap-16 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-6">
           <p class="eyebrow" data-reveal>01 / Our story</p>
@@ -35,7 +35,7 @@
 
     {{-- ============================================================ MISSION & VISION --}}
     {{-- Mission / vision wording is a draft for the client to confirm. --}}
-    <section class="surface-ink section-y" aria-labelledby="mission-title">
+    <section class="surface-white section-y" aria-labelledby="mission-title">
       <div class="container-site">
         <h2 id="mission-title" class="sr-only">Mission and vision</h2>
         <div class="grid gap-16 lg:grid-cols-12 lg:gap-6">
@@ -52,7 +52,7 @@
     </section>
 
     {{-- ============================================================ VALUES --}}
-    <section class="surface-bone section-y" aria-labelledby="values-title">
+    <section class="surface-charcoal section-y" aria-labelledby="values-title">
       <div class="container-site grid gap-16 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-5">
           <div class="section-head lg:sticky lg:top-32" data-reveal>
@@ -89,7 +89,7 @@
     </section>
 
     {{-- ============================================================ HOW WE WORK --}}
-    <section class="surface-ink-2 section-y" aria-labelledby="approach-title">
+    <section class="surface-tint section-y" aria-labelledby="approach-title">
       <div class="container-site">
         <div class="grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-6">
           <div class="lg:col-span-7" data-reveal>
@@ -111,7 +111,7 @@
     </section>
 
     {{-- ============================================================ WHO WE SERVE --}}
-    <section class="surface-ink section-y" aria-labelledby="serve-title">
+    <section class="surface-white section-y" aria-labelledby="serve-title">
       <div class="container-site grid gap-10 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-4" data-reveal>
           <p class="eyebrow">06 / Who we work with</p>

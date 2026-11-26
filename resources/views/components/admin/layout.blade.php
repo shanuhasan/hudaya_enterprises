@@ -15,7 +15,7 @@
     ];
     $isActive = fn (string $patterns) => request()->routeIs(...explode('|', $patterns));
     $user = auth()->user();
-    $logo = $site->logo ?: 'images/brand/logo-lockup-light.png';
+    $logo = $site->logo_on_dark ?: 'images/brand/logo-lockup-light.png'; // sidebar is dark
 @endphp
 <!DOCTYPE html>
 <html lang="en">

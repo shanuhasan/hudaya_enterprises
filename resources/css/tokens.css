@@ -4,16 +4,26 @@
    ========================================================================== */
 
 @theme static {
-  /* ---- Colour: the approved palette ONLY (Tailwind defaults removed) ---- */
+  /* ---- Colour: brand palette taken from the Hudaya logo (Tailwind defaults removed) ----
+     Light theme: white / tinted pages, charcoal text, green for actions, blue for links.
+     Accent colours are never used directly for small text — use the surface variables
+     (--accent, --link) in layout.css, which pick the contrast-safe shade per surface. */
   --color-*: initial;
-  --color-ink: #080808;        /* Primary Black   — main dark surfaces         */
-  --color-ink-2: #171717;      /* Secondary Black — alternate dark surfaces    */
-  --color-graphite: #252525;   /* Dark Grey       — raised dark / light text   */
-  --color-bone: #F5F5F2;       /* Off White       — light surfaces, text on dark */
-  --color-white: #FFFFFF;      /* Pure White      — headings on dark, buttons  */
-  --color-champagne: #A88B60;  /* Accent          — ≤5%: rules, numerals, focus */
-  --color-mute: #777777;       /* Secondary Text  — LARGE text only (≥18px)    */
-  --color-line: #E5E5E5;       /* Border          — hairlines on light         */
+  --color-ink: #1E2326;        /* Deep charcoal   — headings, footer, CTA band       */
+  --color-ink-2: #2A3034;      /* Charcoal 2      — raised elements on dark          */
+  --color-graphite: #393E42;   /* Logo charcoal   — body text; dark feature sections */
+  --color-bone: #F3F6F4;       /* Light tint      — alternate light surface          */
+  --color-mist: #E9F0EB;       /* Green-grey tint — second light surface             */
+  --color-white: #FFFFFF;      /* White           — main surface                     */
+  --color-green: #4AA059;      /* Logo green      — accents on dark, rules, icons    */
+  --color-green-deep: #2B7339; /* Deep green      — buttons, accent text on light (≥5:1 on every light surface) */
+  --color-green-dark: #225E2F; /* Button hover                                       */
+  --color-green-light: #6CC07A;/* Light green     — accent text on charcoal (4.8:1)  */
+  --color-blue: #2773A0;       /* Logo blue       — links on white / tint (≥4.7:1)   */
+  --color-blue-deep: #22668F;  /* Deeper blue     — links on the green-grey mist surface */
+  --color-blue-light: #8CC0E0; /* Light blue      — links on dark                    */
+  --color-mute: #5E686F;       /* Secondary text on light (5.7:1)                    */
+  --color-line: #DCE3DF;       /* Hairlines on light                                 */
 
   /* ---- Fonts ---- */
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;

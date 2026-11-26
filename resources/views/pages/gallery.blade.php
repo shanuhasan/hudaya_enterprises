@@ -3,7 +3,7 @@
     <x-page-hero :crumb="'Gallery'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :hero-size="'compact'" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Gallery hero · rows of black garments on a rail · dark, editorial · 16:9'" />
 
     {{-- ============================================================ GALLERY --}}
-    <section class="surface-ink section-y" aria-labelledby="gallery-title" data-collection-filter>
+    <section class="surface-white section-y" aria-labelledby="gallery-title" data-collection-filter>
       <div class="container-site">
         <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div class="section-head" data-reveal>

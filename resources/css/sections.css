@@ -76,7 +76,7 @@
   .hero__strip-item:hover { color: var(--color-white); }
   .hero__strip-item .lucide { width: 1rem; height: 1rem; transition: transform var(--dur-base) var(--ease-luxe); }
   .hero__strip-item:hover .lucide { transform: translate(3px, -3px); }
-  .hero__strip-index { margin-right: 1rem; color: var(--color-champagne); }
+  .hero__strip-index { margin-right: 1rem; color: var(--accent); }
 
   .scroll-cue {
     display: inline-flex;
@@ -92,7 +92,7 @@
   .scroll-cue .lucide {
     width: 1rem;
     height: 1rem;
-    color: var(--color-champagne);
+    color: var(--accent);
     animation: scroll-cue 2.4s var(--ease-luxe) 1.5s 3;  /* a few gentle pulses, then stops */
   }
   @keyframes scroll-cue {
@@ -133,7 +133,7 @@
   .audience-list li + li::before {
     content: "/";
     margin-inline: 0.6em;
-    color: var(--color-champagne);
+    color: var(--accent);
     font-style: italic;
   }
 

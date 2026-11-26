@@ -3,7 +3,7 @@
     <x-page-hero :crumb="'Products'" :eyebrow="$page->hero_eyebrow" :title="$page->hero_title" :title-em="$page->hero_title_em" :lead="$page->hero_lead" :src="$page->hero_image" :alt="$page->hero_image_alt" :brief="'Products hero · black track pants and jacket flat-lay · dark backdrop · 16:9'" />
 
     {{-- ============================================================ INTRO --}}
-    <section class="surface-bone section-y" aria-labelledby="products-intro-title">
+    <section class="surface-mist section-y" aria-labelledby="products-intro-title">
       <div class="container-site grid gap-14 lg:grid-cols-12 lg:gap-6">
         <div class="lg:col-span-6" data-reveal>
           <p class="eyebrow">01 / Made to order</p>
@@ -23,7 +23,7 @@
     </section>
 
     {{-- ============================================================ CATEGORY SHOWCASES --}}
-    <section class="surface-ink section-y" aria-labelledby="categories-title">
+    <section class="surface-white section-y" aria-labelledby="categories-title">
       <div class="container-site">
         <div class="section-head" data-reveal>
           <p class="eyebrow">02 / Categories</p>
@@ -57,7 +57,7 @@
     </section>
 
     {{-- ============================================================ CUSTOMISATION --}}
-    <section class="surface-bone section-y" aria-labelledby="custom-title">
+    <section class="surface-charcoal section-y" aria-labelledby="custom-title">
       <div class="container-site">
         <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div class="section-head lg:col-span-6" data-reveal>
@@ -103,7 +103,7 @@
     </section>
 
     {{-- ============================================================ FEATURED --}}
-    <section id="styles" class="surface-ink-2 section-y" aria-labelledby="featured-title" data-collection-filter>
+    <section id="styles" class="surface-tint section-y" aria-labelledby="featured-title" data-collection-filter>
       <div class="container-site">
         <div class="flex flex-col gap-10">
           <div class="section-head" data-reveal>

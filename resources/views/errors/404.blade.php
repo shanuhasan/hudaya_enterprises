@@ -1,7 +1,7 @@
 {{-- Not found: full site layout so visitors can navigate on. --}}
 <x-layouts.app title="Page not found" description="The page you are looking for does not exist." robots="noindex">
   <main id="main">
-    <section class="surface-ink section-y" aria-labelledby="nf-title" style="padding-top: calc(var(--header-h) + var(--section-y))">
+    <section class="surface-dark section-y" aria-labelledby="nf-title" style="padding-top: calc(var(--header-h) + var(--section-y))">
       <div class="container-site">
         <div class="section-head max-w-2xl">
           <p class="eyebrow">Error 404</p>

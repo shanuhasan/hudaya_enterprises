@@ -75,7 +75,7 @@
     content: "";
     width: 2.5rem;
     height: 1px;
-    background-color: var(--color-champagne);
+    background-color: var(--accent);
   }
   .eyebrow--plain::before { display: none; }
 
@@ -94,7 +94,7 @@
     content: "";
     width: 2.5rem;
     height: 1px;
-    background-color: var(--color-champagne);
+    background-color: var(--accent);
   }
 
   /* ------------------------------------------------------------------------
@@ -134,58 +134,32 @@
   .btn:disabled,
   .btn[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }
 
-  /* Primary — white background, black text */
-  .btn-primary {
-    background-color: var(--color-white);
-    color: var(--color-ink);
-    border-color: var(--color-white);
-  }
-  .btn-primary:hover {
-    background-color: var(--color-bone);
-    border-color: var(--color-bone);
-  }
-
-  /* Secondary — transparent, white border */
-  .btn-secondary {
-    background-color: transparent;
+  /* Primary — brand green, works on light and dark surfaces (white text 5.1:1) */
+  .btn-primary,
+  .btn-dark,
+  .btn-accent {
+    background-color: var(--color-green-deep);
     color: var(--color-white);
-    border-color: var(--color-white);
+    border-color: var(--color-green-deep);
   }
-  .btn-secondary:hover {
-    background-color: var(--color-white);
-    color: var(--color-ink);
-  }
-
-  /* On light surfaces */
-  .btn-dark {
-    background-color: var(--color-ink);
-    color: var(--color-white);
-    border-color: var(--color-ink);
-  }
-  .btn-dark:hover {
-    background-color: var(--color-graphite);
-    border-color: var(--color-graphite);
+  .btn-primary:hover,
+  .btn-dark:hover,
+  .btn-accent:hover {
+    background-color: var(--color-green-dark);
+    border-color: var(--color-green-dark);
   }
 
+  /* Secondary — outline in the surface's strongest text colour (charcoal on light, white on dark) */
+  .btn-secondary,
   .btn-outline-dark {
     background-color: transparent;
-    color: var(--color-ink);
-    border-color: var(--color-ink);
+    color: var(--fg-strong);
+    border-color: var(--fg-strong);
   }
+  .btn-secondary:hover,
   .btn-outline-dark:hover {
-    background-color: var(--color-ink);
-    color: var(--color-white);
-  }
-
-  /* Accent — use sparingly (one per view at most) */
-  .btn-accent {
-    background-color: var(--color-champagne);
-    color: var(--color-ink);
-    border-color: var(--color-champagne);
-  }
-  .btn-accent:hover {
-    background-color: transparent;
-    color: var(--color-champagne);
+    background-color: var(--fg-strong);
+    color: var(--fg-inverse);
   }
 
   /* Sizes */
@@ -208,10 +182,8 @@
   .btn-icon:hover {
     background-color: var(--fg-strong);
     border-color: var(--fg-strong);
-    color: var(--color-ink);
+    color: var(--fg-inverse);
   }
-  .surface-bone .btn-icon:hover,
-  .surface-white .btn-icon:hover { color: var(--color-white); }
 
   /* ------------------------------------------------------------------------
      LINKS
@@ -228,7 +200,7 @@
     line-height: 1;
     letter-spacing: var(--tracking-btn);
     text-transform: uppercase;
-    color: var(--fg-strong);
+    color: var(--link);
   }
   button.link-arrow { background: none; border: 0; padding-inline: 0; cursor: pointer; }
   .link-arrow::after {
@@ -253,7 +225,7 @@
     background-repeat: no-repeat;
     transition: background-size var(--dur-base) var(--ease-luxe), color var(--dur-ui) ease;
   }
-  .link-underline:hover { background-size: 100% 1px; color: var(--fg-strong); }
+  .link-underline:hover { background-size: 100% 1px; color: var(--link); }
 
   /* ------------------------------------------------------------------------
      LOGO (supplied artwork, light-lettering lockup for dark surfaces)
@@ -271,6 +243,13 @@
   @media (min-width: 64rem) { .logo__img { height: 2.75rem; } }
   .logo--lg .logo__img { height: 3.5rem; }
 
+  /* Original-colour logo on light backgrounds, white-lettering logo on dark ones. */
+  .logo__img--on-dark { display: none; }
+  :is(.surface-dark, .surface-charcoal) .logo__img--on-light,
+  .js body[data-header="overlay"] .site-top:not(.is-scrolled) .logo__img--on-light { display: none; }
+  :is(.surface-dark, .surface-charcoal) .logo__img--on-dark,
+  .js body[data-header="overlay"] .site-top:not(.is-scrolled) .logo__img--on-dark { display: block; }
+
   /* ------------------------------------------------------------------------
      SKIP LINK
      ------------------------------------------------------------------------ */
@@ -280,8 +259,8 @@
     left: 1rem;
     z-index: 100;
     padding: 0.875rem 1.25rem;
-    background: var(--color-white);
-    color: var(--color-ink);
+    background: var(--color-green-deep);
+    color: var(--color-white);
     font-size: var(--text-micro);
     font-weight: 600;
     letter-spacing: var(--tracking-btn);
@@ -306,9 +285,8 @@
   /* Announcement bar */
   .announce {
     height: var(--announce-h);
-    background-color: var(--color-ink);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-bone) 10%, transparent);
-    color: color-mix(in srgb, var(--color-bone) 78%, transparent);
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
     font-size: var(--text-micro);
     font-weight: 500;
     letter-spacing: var(--tracking-nav);
@@ -335,20 +313,27 @@
     color: var(--color-white);
     transition: color var(--dur-ui) ease;
   }
-  .announce__link:hover { color: var(--color-champagne); }
+  .announce__link { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: transparent; }
+  .announce__link:hover { text-decoration-color: currentColor; }
   .announce__link .lucide { width: 0.875rem; height: 0.875rem; }
   @media (width >= 48rem) {
     .announce__inner { justify-content: space-between; }
     .announce__link { display: inline-flex; }
   }
 
+  /* Solid state (scrolled, or no JS): white bar, charcoal links, original-colour logo.
+     Header colours are variables so the transparent state over a photo hero only swaps values. */
   .site-header {
+    --hdr-fg: var(--color-graphite);
+    --hdr-fg-strong: var(--color-ink);
+    --hdr-line: var(--color-line);
+    --hdr-accent: var(--color-green-deep);
     position: relative;
     height: var(--header-h);
-    color: var(--color-white);
-    /* Solid state: always opaque, separated from dark sections by a visible hairline */
-    background-color: var(--color-ink-2);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-bone) 16%, transparent);
+    color: var(--hdr-fg-strong);
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--hdr-line);
+    box-shadow: 0 1px 12px rgb(30 35 38 / 0.06);
     transition:
       background-color var(--dur-base) var(--ease-luxe),
       border-color var(--dur-base) var(--ease-luxe);
@@ -356,8 +341,13 @@
   /* Transparent only at the very top of overlay pages, and only when JS is running
      (without JS the header simply stays solid). */
   .js body[data-header="overlay"] .site-top:not(.is-scrolled) .site-header {
+    --hdr-fg: color-mix(in srgb, var(--color-white) 82%, transparent);
+    --hdr-fg-strong: var(--color-white);
+    --hdr-line: color-mix(in srgb, var(--color-white) 30%, transparent);
+    --hdr-accent: var(--color-green);
     background-color: transparent;
     border-bottom-color: transparent;
+    box-shadow: none;
   }
 
   .site-header__inner {
@@ -391,7 +381,7 @@
     line-height: 1;
     letter-spacing: var(--tracking-nav);
     text-transform: uppercase;
-    color: color-mix(in srgb, var(--color-bone) 78%, transparent);
+    color: var(--hdr-fg);
     transition: color var(--dur-ui) ease;
   }
   .nav-link::after {
@@ -406,12 +396,13 @@
     transform-origin: right;
     transition: transform var(--dur-base) var(--ease-luxe);
   }
-  .nav-link:hover { color: var(--color-white); }
+  .nav-link:hover { color: var(--hdr-fg-strong); }
   .nav-link:hover::after { transform: scaleX(1); transform-origin: left; }
-  .nav-link[aria-current="page"] { color: var(--color-white); }
+  .nav-link[aria-current="page"] { color: var(--hdr-fg-strong); }
   .nav-link[aria-current="page"]::after {
     transform: scaleX(1);
-    background-color: var(--color-champagne);
+    height: 2px;
+    background-color: var(--hdr-accent);
   }
 
   .menu-toggle {
@@ -420,12 +411,14 @@
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    color: var(--color-white);
-    border: 1px solid color-mix(in srgb, var(--color-bone) 28%, transparent);
+    color: var(--fg-strong);
+    border: 1px solid var(--line-strong);
     background: transparent;
     transition: border-color var(--dur-ui) ease;
   }
-  .menu-toggle:hover { border-color: var(--color-white); }
+  .menu-toggle:hover { border-color: var(--fg-strong); }
+  .site-header .menu-toggle { color: var(--hdr-fg-strong); border-color: var(--hdr-line); }
+  .site-header .menu-toggle:hover { border-color: var(--hdr-fg-strong); }
 
   /* Desktop: full navigation replaces the menu button (must come after .menu-toggle) */
   @media (width >= 80rem) {
@@ -449,7 +442,7 @@
   .mobile-menu__scrim {
     position: absolute;
     inset: 0;
-    background-color: color-mix(in srgb, var(--color-ink) 70%, transparent);
+    background-color: color-mix(in srgb, var(--color-ink) 55%, transparent);
     opacity: 0;
     transition: opacity var(--dur-base) var(--ease-luxe);
   }
@@ -514,7 +507,7 @@
     transform: none;
     transition-delay: calc(var(--i, 0) * 35ms + 120ms), calc(var(--i, 0) * 35ms + 120ms), 0ms;
   }
-  .mobile-menu__link:hover { color: var(--color-champagne); }
+  .mobile-menu__link:hover { color: var(--accent); }
   .mobile-menu__link[aria-current="page"] { font-style: italic; font-weight: 400; }
 
   .mobile-menu__index {
@@ -523,7 +516,7 @@
     font-size: var(--text-micro);
     font-weight: 500;
     letter-spacing: var(--tracking-nav);
-    color: var(--color-champagne);
+    color: var(--accent);
   }
 
   .mobile-menu__footer {
@@ -698,7 +691,7 @@
     font-size: var(--text-eyebrow);
     font-weight: 500;
     letter-spacing: var(--tracking-eyebrow);
-    color: var(--color-champagne);
+    color: var(--accent);
   }
   .category-tile__title {
     font-family: var(--font-serif);
@@ -813,7 +806,7 @@
       bottom: auto;
       width: 2.75rem;
       height: 1px;
-      background-color: var(--color-champagne);
+      background-color: var(--accent);
     }
     .process__step:last-child::before { display: block; }
     .process__icon { margin-bottom: 1rem; }
@@ -872,8 +865,8 @@
   }
   .field__input:focus {
     outline: none;
-    border-bottom-color: var(--color-champagne);
-    box-shadow: 0 1px 0 0 var(--color-champagne);
+    border-bottom-color: var(--accent);
+    box-shadow: 0 1px 0 0 var(--accent);
   }
   textarea.field__input { min-height: 8rem; resize: vertical; }
 
@@ -959,11 +952,11 @@
     content: "";
     width: 0.5rem;
     height: 0.5rem;
-    background-color: var(--color-champagne);
+    background-color: var(--accent);
     transform: scale(0);
     transition: transform var(--dur-ui) ease;
   }
-  .check input:checked { border-color: var(--color-champagne); }
+  .check input:checked { border-color: var(--accent); }
   .check input:checked::before { transform: scale(1); }
 
   /* ------------------------------------------------------------------------
@@ -995,7 +988,7 @@
     right: 0;
     bottom: -1px;
     height: 1px;
-    background-color: var(--color-champagne);
+    background-color: var(--accent);
     transform: scaleX(0);
     transition: transform var(--dur-base) var(--ease-luxe);
   }
@@ -1056,20 +1049,22 @@
   .fab .lucide { width: 1.25rem; height: 1.25rem; }
 
   .fab--whatsapp {
-    background-color: var(--color-ink);
-    color: var(--color-champagne);
-    border-color: color-mix(in srgb, var(--color-champagne) 55%, transparent);
+    background-color: var(--color-green-deep);
+    color: var(--color-white);
+    border-color: var(--color-green-deep);
+    box-shadow: 0 6px 20px rgb(30 35 38 / 0.18);
   }
-  .fab--whatsapp:hover { background-color: var(--color-champagne); color: var(--color-ink); }
+  .fab--whatsapp:hover { background-color: var(--color-green-dark); border-color: var(--color-green-dark); }
 
   .fab--top {
     width: 2.75rem;
     height: 2.75rem;
-    background-color: var(--color-ink-2);
-    color: var(--color-white);
-    border-color: color-mix(in srgb, var(--color-bone) 22%, transparent);
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    border-color: var(--color-line);
+    box-shadow: 0 4px 14px rgb(30 35 38 / 0.12);
   }
-  .fab--top:hover { background-color: var(--color-white); color: var(--color-ink); }
+  .fab--top:hover { background-color: var(--color-ink); border-color: var(--color-ink); color: var(--color-white); }
 
   /* Shown only once the visitor has scrolled (keeps heroes clean) */
   .js:not(.has-scrolled) .fab--whatsapp,

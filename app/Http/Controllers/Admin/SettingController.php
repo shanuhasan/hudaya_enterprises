@@ -47,7 +47,9 @@ class SettingController extends Controller
     {
         $data = $request->validate(self::RULES + [
             'logo_file' => ['nullable', 'image', 'mimes:png,webp,jpg,jpeg', 'max:2048', 'dimensions:min_width=200,max_width=6000'],
+            'logo_on_dark_file' => ['nullable', 'image', 'mimes:png,webp,jpg,jpeg', 'max:2048', 'dimensions:min_width=200,max_width=6000'],
             'remove_logo' => ['boolean'],
+            'remove_logo_on_dark' => ['boolean'],
         ], [
             'phone_href.regex' => 'Use digits only, optionally starting with +, e.g. +919800000000.',
             'whatsapp_number.digits_between' => 'Use digits only with the country code, e.g. 919800000000.',
@@ -56,19 +58,23 @@ class SettingController extends Controller
             'phone_href' => 'phone for dialling',
             'whatsapp_number' => 'WhatsApp number',
             'logo_file' => 'logo',
+            'logo_on_dark_file' => 'logo for dark backgrounds',
         ]);
 
         $current = Setting::query()->pluck('value', 'key');
 
-        if ($request->hasFile('logo_file')) {
-            $this->images->delete($current['logo'] ?? null);
-            $data['logo'] = $this->images->storeLogo($request->file('logo_file'));
-        } elseif ($request->boolean('remove_logo')) {
-            $this->images->delete($current['logo'] ?? null);
-            $data['logo'] = '';
+        // Two logo versions: setting key => [upload field, remove checkbox]
+        foreach (['logo' => ['logo_file', 'remove_logo'], 'logo_on_dark' => ['logo_on_dark_file', 'remove_logo_on_dark']] as $key => [$file, $remove]) {
+            if ($request->hasFile($file)) {
+                $this->images->delete($current[$key] ?? null);
+                $data[$key] = $this->images->storeLogo($request->file($file));
+            } elseif ($request->boolean($remove)) {
+                $this->images->delete($current[$key] ?? null);
+                $data[$key] = '';
+            }
         }
 
-        foreach (array_keys(self::RULES) + ['logo' => 'logo'] as $key) {
+        foreach ([...array_keys(self::RULES), 'logo', 'logo_on_dark'] as $key) {
             if (! array_key_exists($key, $data)) {
                 continue;
             }

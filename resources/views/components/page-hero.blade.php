@@ -20,7 +20,7 @@
     'brief' => '',
     'heroSize' => 'page',
 ])
-<section class="hero hero--{{ $heroSize }} surface-ink" aria-labelledby="page-title">
+<section class="hero hero--{{ $heroSize }} surface-dark" aria-labelledby="page-title">
   <div class="hero__media" aria-hidden="true">
     <x-media :src="$src" :alt="$alt" :brief="$brief" img-class="hero-settle" loading="eager" priority="high" />
   </div>

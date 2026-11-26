@@ -32,43 +32,53 @@
    so the same markup works on dark or light backgrounds.
    ========================================================================== */
 
+/* Light surfaces (the default). --accent / --link are the contrast-safe brand shades
+   for small text on this background; decorative rules may use --color-green directly. */
 :root,
-.surface-ink,
-.surface-ink-2,
-.surface-graphite {
-  --fg: color-mix(in srgb, var(--color-bone) 82%, transparent);
-  --fg-muted: color-mix(in srgb, var(--color-bone) 70%, transparent);
-  --fg-strong: var(--color-white);
-  --line: color-mix(in srgb, var(--color-bone) 12%, transparent);
-  --line-strong: color-mix(in srgb, var(--color-bone) 40%, transparent);
-  --accent-text: var(--color-champagne);
-  --ph-bg: var(--color-graphite);
-  color-scheme: dark;
-}
-
-.surface-bone,
-.surface-white {
+.surface-white,
+.surface-tint,
+.surface-mist {
   --fg: var(--color-graphite);
-  --fg-muted: var(--color-graphite);
+  --fg-muted: var(--color-mute);
   --fg-strong: var(--color-ink);
+  --fg-inverse: var(--color-white);          /* text on a --fg-strong background */
   --line: var(--color-line);
-  --line-strong: var(--color-mute);
-  --accent-text: var(--color-graphite);   /* champagne is too low-contrast for small text on light */
-  --ph-bg: color-mix(in srgb, var(--color-ink) 6%, var(--color-bone));
+  --line-strong: color-mix(in srgb, var(--color-graphite) 45%, transparent);
+  --accent: var(--color-green-deep);
+  --accent-text: var(--color-green-deep);
+  --link: var(--color-blue);
+  --ph-bg: color-mix(in srgb, var(--color-graphite) 7%, var(--color-bone));
   color-scheme: light;
 }
 
-.surface-ink      { --surface-bg: var(--color-ink); }
-.surface-ink-2    { --surface-bg: var(--color-ink-2); }
-.surface-graphite { --surface-bg: var(--color-graphite); --ph-bg: var(--color-ink-2); }
-.surface-bone     { --surface-bg: var(--color-bone); }
-.surface-white    { --surface-bg: var(--color-white); }
+/* Dark surfaces: photo heroes, charcoal feature sections, CTA band, footer. */
+.surface-dark,
+.surface-charcoal,
+.hero {
+  --fg: color-mix(in srgb, var(--color-white) 84%, transparent);
+  --fg-muted: color-mix(in srgb, var(--color-white) 72%, transparent);
+  --fg-strong: var(--color-white);
+  --fg-inverse: var(--color-ink);
+  --line: color-mix(in srgb, var(--color-white) 14%, transparent);
+  --line-strong: color-mix(in srgb, var(--color-white) 42%, transparent);
+  --accent: var(--color-green);
+  --accent-text: var(--color-green);
+  --link: var(--color-blue-light);
+  --ph-bg: var(--color-ink-2);
+  color-scheme: dark;
+}
 
-.surface-ink,
-.surface-ink-2,
-.surface-graphite,
-.surface-bone,
-.surface-white {
+.surface-white    { --surface-bg: var(--color-white); }
+.surface-tint     { --surface-bg: var(--color-bone); }
+.surface-mist     { --surface-bg: var(--color-mist); --link: var(--color-blue-deep); }
+.surface-charcoal { --surface-bg: var(--color-graphite); --ph-bg: var(--color-ink-2); --accent: var(--color-green-light); --accent-text: var(--color-green-light); }
+.surface-dark     { --surface-bg: var(--color-ink); }
+
+.surface-white,
+.surface-tint,
+.surface-mist,
+.surface-charcoal,
+.surface-dark {
   background-color: var(--surface-bg);
   color: var(--fg);
 }

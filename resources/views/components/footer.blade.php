@@ -1,5 +1,5 @@
 {{-- Component: footer — company details come from $site (settings). --}}
-<footer class="surface-ink pt-[var(--section-y-compact)]" aria-labelledby="footer-title">
+<footer class="surface-dark pt-[var(--section-y-compact)]" aria-labelledby="footer-title">
   <h2 id="footer-title" class="sr-only">Site footer</h2>
 
   <div class="container-site">

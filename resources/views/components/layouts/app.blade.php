@@ -41,7 +41,7 @@
   <title>{{ $title }} | {{ $site->name }}</title>
   <meta name="description" content="{{ $description }}">
   @if ($robots)<meta name="robots" content="{{ $robots }}">@endif
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="canonical" href="{{ url()->current() }}">
 
   <meta property="og:type" content="website">
@@ -66,7 +66,7 @@
 
   <script type="application/ld+json">{!! json_encode($organization, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_PRETTY_PRINT) !!}</script>
 </head>
-<body class="surface-ink" data-header="{{ $header }}">
+<body class="surface-white" data-header="{{ $header }}">
   <x-header :nav-active="$navActive" />
 
   {{ $slot }}

@@ -25,7 +25,7 @@
   .crumbs li + li::before {
     content: "/";
     margin-inline: 0.75rem;
-    color: var(--color-champagne);
+    color: var(--accent);
   }
   .crumbs a { transition: color var(--dur-ui) ease; }
   .crumbs a:hover { color: var(--fg-strong); }
@@ -47,7 +47,7 @@
     font-style: italic;
     font-weight: 400;
     line-height: 1;
-    color: var(--color-champagne);
+    color: var(--accent);
   }
   @media (width >= 64rem) {
     .showcase {
@@ -170,7 +170,7 @@
      ------------------------------------------------------------------------ */
   .placeholder-note {
     padding: 1.25rem 1.5rem;
-    border-left: 2px solid var(--color-champagne);
+    border-left: 2px solid var(--accent);
     background-color: color-mix(in srgb, var(--fg-strong) 4%, transparent);
     font-size: var(--text-small);
     font-style: italic;
@@ -296,8 +296,8 @@
     justify-content: center;
     width: 3rem;
     height: 3rem;
-    border: 1px solid var(--color-champagne);
-    color: var(--color-champagne);
+    border: 1px solid var(--accent);
+    color: var(--accent);
   }
   .form-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .form-legend {

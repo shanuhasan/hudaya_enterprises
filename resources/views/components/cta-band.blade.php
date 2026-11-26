@@ -8,7 +8,7 @@
     'titleEm' => 'Our craftsmanship.',
     'text' => 'Share your design, quantity and timeline. We will respond with sampling options and a production quote.',
 ])
-<section class="surface-ink-2 section-y rule-top" aria-labelledby="cta-band-title">
+<section class="surface-charcoal section-y" aria-labelledby="cta-band-title">
   <div class="container-site">
     <div class="section-head section-head--center max-w-4xl" data-reveal>
       <p class="eyebrow">{{ $eyebrow }}</p>
