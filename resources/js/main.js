@@ -14,6 +14,7 @@ import { initBackToTop } from './modules/back-to-top.js';
 const lazyModules = [
   ['[data-collection-filter]', () => import('./modules/collection-filter.js')],
   ['[data-lightbox]', () => import('./modules/gallery.js')],
+  ['select.field__input', () => import('./modules/enhanced-select.js')],
   ['form[data-form]', () => import('./modules/forms.js')],
 ];
 

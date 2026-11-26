@@ -44,6 +44,7 @@ Photo sources and licences: **[docs/PHOTO-CREDITS.md](docs/PHOTO-CREDITS.md)**.
 | `resources/views/pages`, `components` | Public Blade views (`category.blade.php` renders every category) |
 | `resources/views/admin`, `components/admin` | Admin views |
 | `resources/css/app.css`, `admin.css` | Public / admin styles (separate builds) |
+| `resources/js/modules/enhanced-select.js` | Searchable dropdowns (Tom Select) for the contact form and every admin `select.adm-select`; native `<select>` without JS |
 | `database/seeders` | The approved content — safe to re-run, never overwrites edits |
 | `deploy/` | Nginx example, deploy + backup scripts, shared-hosting `index.php` |
 

@@ -76,8 +76,8 @@ function setupForm(form) {
     if (invalid.length) {
       event.preventDefault();
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      invalid[0].focus({ preventScroll: true });
-      invalid[0].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      focusField(invalid[0]);
+      (invalid[0].tomselect?.wrapper ?? invalid[0]).scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
       return;
     }
 
@@ -93,5 +93,11 @@ function setupForm(form) {
   // Server-side errors are already in the markup: link them for screen readers and focus the first one.
   const serverInvalid = fields.filter((el) => el.getAttribute('aria-invalid') === 'true');
   serverInvalid.forEach((el) => touched.add(el));
-  serverInvalid[0]?.focus({ preventScroll: true });
+  if (serverInvalid[0]) focusField(serverInvalid[0]);
+}
+
+/** Focus a field; enhanced dropdowns (Tom Select) focus their visible control instead of the hidden select. */
+function focusField(el) {
+  if (el.tomselect) el.tomselect.focus();
+  else el.focus({ preventScroll: true });
 }

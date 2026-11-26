@@ -67,3 +67,8 @@ document.querySelectorAll('input[type=file][data-preview]').forEach((input) => {
 document.querySelectorAll('[data-dismiss]').forEach((btn) => {
   btn.addEventListener('click', () => btn.closest('[data-flash]')?.remove());
 });
+
+/* ---------- Enhanced dropdowns (Tom Select) — loaded only where a dropdown exists ---------- */
+if (document.querySelector('select.adm-select')) {
+  import('./modules/enhanced-select.js').then(({ enhanceSelects }) => enhanceSelects('select.adm-select'));
+}

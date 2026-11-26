@@ -16,6 +16,7 @@
     "dependencies": {
         "@fontsource/cormorant-garamond": "5.3.0",
         "@fontsource/inter": "5.3.0",
-        "lucide": "1.70.0"
+        "lucide": "1.70.0",
+        "tom-select": "2.7.0"
     }
 }
